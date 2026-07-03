@@ -272,6 +272,196 @@
       flex-wrap:wrap;
     }
 
+  
+    /* ===== FIX: basic inputs + one-by-one question layout ===== */
+    .form-row .field{
+      min-width:0;
+    }
+    .field.input-with-unit{
+      position:relative;
+    }
+    .field.input-with-unit input{
+      padding-right:48px;
+    }
+    .field.input-with-unit::after{
+      content: attr(data-unit);
+      position:absolute;
+      right:14px;
+      bottom:13px;
+      color:var(--brown);
+      font-weight:800;
+      line-height:1;
+      writing-mode:horizontal-tb!important;
+      word-break:normal!important;
+    }
+    #height, #weight, #age{
+      min-width:0;
+      writing-mode:horizontal-tb!important;
+    }
+    #diagnosisForm.single-question-mode .question{
+      display:none;
+    }
+    #diagnosisForm.single-question-mode .question.current-question{
+      display:block;
+      animation:fade .25s ease;
+    }
+    #diagnosisForm.single-question-mode .step{
+      display:block!important;
+    }
+    #diagnosisForm.single-question-mode .step:not(.step-has-current) .step-head{
+      display:none;
+    }
+    .question-count{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:10px;
+      text-align:center;
+    }
+    .question-current-title{
+      text-align:center;
+      margin:10px 0 16px;
+    }
+    #diagnosisForm.single-question-mode .options{
+      grid-template-columns:1fr!important;
+      max-width:540px;
+      margin:0 auto;
+    }
+    #diagnosisForm.single-question-mode .option{
+      width:100%;
+      min-width:0;
+      min-height:58px;
+      font-size:16px;
+      justify-content:flex-start;
+      writing-mode:horizontal-tb!important;
+      word-break:keep-all!important;
+      overflow-wrap:break-word!important;
+    }
+    #diagnosisForm.single-question-mode .option span{
+      writing-mode:horizontal-tb!important;
+      word-break:keep-all!important;
+      overflow-wrap:break-word!important;
+      line-height:1.6;
+    }
+    #diagnosisForm.single-question-mode input[type=radio]{
+      flex:0 0 auto;
+      width:22px!important;
+      height:22px!important;
+      margin:0!important;
+    }
+    @media(max-width:759px){
+      .form-row{
+        grid-template-columns:1fr!important;
+      }
+      .field.input-with-unit input{
+        padding-right:52px;
+      }
+      .field.input-with-unit::after{
+        right:16px;
+        bottom:14px;
+      }
+    }
+
+    /* ===== Print only result ===== */
+    @media print{
+      body{background:white!important;}
+      body *{visibility:hidden!important;}
+      #results, #results *{visibility:visible!important;}
+      #results{
+        position:absolute!important;
+        left:0!important;
+        top:0!important;
+        width:100%!important;
+        box-shadow:none!important;
+        border:none!important;
+        background:white!important;
+      }
+      #results:after{display:none!important;}
+      .no-print{display:none!important;}
+    }
+
+  
+    /* ===== COMPLETE VERSION POLISH ===== */
+    .result-cover{
+      text-align:center;
+      padding:28px 18px;
+      margin-top:22px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(217,121,139,.12), transparent 45%),
+        linear-gradient(135deg,#fffdf9,#fff6ef);
+    }
+    .result-cover-title{
+      font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+      font-size:clamp(26px,5vw,46px);
+      color:var(--brown);
+      font-weight:900;
+      line-height:1.45;
+      margin:8px 0;
+    }
+    .result-cover-title span{color:var(--pink);}
+    .result-date{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.05em;
+    }
+    .stars{
+      color:var(--gold);
+      letter-spacing:.08em;
+      font-size:16px;
+      font-weight:900;
+    }
+    .cta-box{
+      margin-top:22px;
+      padding:18px;
+      border:1px solid #f0cfd5;
+      border-radius:24px;
+      background:#fff7f8;
+      text-align:center;
+    }
+    .cta-box h2{
+      font-size:clamp(21px,3.2vw,30px);
+      color:var(--pink);
+      margin-bottom:8px;
+    }
+    .cta-box p{
+      margin:7px 0;
+    }
+    .mini-action{
+      display:inline-block;
+      margin-top:10px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--pink),var(--pink-dark));
+      color:#fff;
+      font-weight:900;
+    }
+
+    /* Print: result only, with nice page breaks */
+    @media print{
+      @page{size:A4; margin:12mm;}
+      body{background:white!important;}
+      body *{visibility:hidden!important;}
+      #results, #results *{visibility:visible!important;}
+      #results{
+        position:absolute!important;
+        left:0!important;
+        top:0!important;
+        width:100%!important;
+        box-shadow:none!important;
+        border:none!important;
+        background:white!important;
+        padding:0!important;
+      }
+      #results:after{display:none!important;}
+      .no-print{display:none!important;}
+      .result-cover{break-after:page;}
+      .generated{break-inside:avoid;}
+      .rank-card,.month,.card,.todo,.evidence{break-inside:avoid;}
+    }
+
   </style>
 </head>
 <body>
@@ -313,6 +503,8 @@
   </main>
 
   <script>
+let currentQuestionIndex = 0;
+
     const categories = [
       "食事量改善","栄養バランス改善","活動量UP","ボディメイク",
       "睡眠改善","ストレスケア","環境づくり","継続の工夫"
@@ -659,6 +851,182 @@
       document.getElementById("resultContent").innerHTML = html;
       window.scrollTo({top:0, behavior:"smooth"});
     }
-  </script>
+  
+/* ===== FINAL FIX: one answer -> next question, but basic inputs are NOT questions ===== */
+function setupInputUnits(){
+  const units = {height:"cm", weight:"kg", age:"歳"};
+  Object.entries(units).forEach(([id, unit]) => {
+    const input = document.getElementById(id);
+    if(input && input.parentElement){
+      input.parentElement.classList.add("input-with-unit");
+      input.parentElement.setAttribute("data-unit", unit);
+    }
+  });
+}
+
+function getDiagnosisQuestions(){
+  return Array.from(document.querySelectorAll("#steps .question"));
+}
+
+function updateQuestionViewFinal(){
+  const questions = getDiagnosisQuestions();
+  if(!questions.length) return;
+
+  document.getElementById("diagnosisForm").classList.add("single-question-mode");
+
+  questions.forEach((q, i) => q.classList.toggle("current-question", i === currentQuestionIndex));
+
+  document.querySelectorAll("#steps .step").forEach(step => {
+    step.classList.toggle("step-has-current", !!step.querySelector(".question.current-question"));
+  });
+
+  const total = questions.length;
+  const now = currentQuestionIndex + 1;
+  const percent = Math.round((now / total) * 100);
+
+  const progressLabel = document.getElementById("progressLabel");
+  const progressPercent = document.getElementById("progressPercent");
+  const progressFill = document.getElementById("progressFill");
+  if(progressLabel) progressLabel.textContent = `QUESTION ${now} / ${total}`;
+  if(progressPercent) progressPercent.textContent = `${percent}%`;
+  if(progressFill) progressFill.style.width = `${percent}%`;
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const diagnoseBtn = document.getElementById("diagnoseBtn");
+  if(prevBtn) prevBtn.style.display = currentQuestionIndex === 0 ? "none" : "inline-block";
+  if(nextBtn) nextBtn.classList.toggle("hidden", currentQuestionIndex === total - 1);
+  if(diagnoseBtn) diagnoseBtn.classList.toggle("hidden", currentQuestionIndex !== total - 1);
+
+  questions.forEach((q, i) => {
+    let count = q.querySelector(".question-count");
+    if(!count){
+      count = document.createElement("div");
+      count.className = "question-count";
+      q.prepend(count);
+    }
+    count.textContent = `質問 ${i + 1} / ${total}`;
+    const title = q.querySelector(".question-title");
+    if(title) title.classList.add("question-current-title");
+  });
+}
+
+function nextStep(){
+  const questions = getDiagnosisQuestions();
+  if(currentQuestionIndex < questions.length - 1){
+    currentQuestionIndex++;
+    updateQuestionViewFinal();
+    document.getElementById("diagnosisForm").scrollIntoView({behavior:"smooth"});
+  }
+}
+
+function prevStep(){
+  if(currentQuestionIndex > 0){
+    currentQuestionIndex--;
+    updateQuestionViewFinal();
+    document.getElementById("diagnosisForm").scrollIntoView({behavior:"smooth"});
+  }
+}
+
+document.addEventListener("change", (e) => {
+  if(e.target.matches('#steps input[type="radio"]')){
+    const questions = getDiagnosisQuestions();
+    if(currentQuestionIndex < questions.length - 1){
+      setTimeout(() => {
+        currentQuestionIndex++;
+        updateQuestionViewFinal();
+      }, 170);
+    }else{
+      updateQuestionViewFinal();
+    }
+  }
+});
+
+setupInputUnits();
+setTimeout(updateQuestionViewFinal, 120);
+
+
+/* final reset override */
+if(typeof resetForm === "function"){
+  const __resetFormOriginal = resetForm;
+  resetForm = function(){
+    currentQuestionIndex = 0;
+    __resetFormOriginal();
+    setupInputUnits();
+    setTimeout(updateQuestionViewFinal, 80);
+  };
+}
+
+
+/* ===== COMPLETE VERSION FINAL RESULT ENHANCEMENTS ===== */
+function todayString(){
+  const d = new Date();
+  return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+}
+function starScore(score){
+  const n = Math.max(1, Math.min(5, Math.round(score / 8 * 5)));
+  return "★".repeat(n) + "☆".repeat(5-n);
+}
+if(typeof diagnose === "function" && !window.__completeDiagnoseWrapped){
+  window.__completeDiagnoseWrapped = true;
+  const __originalDiagnose = diagnose;
+  diagnose = function(){
+    __originalDiagnose();
+
+    const results = document.getElementById("results");
+    const typeName = document.getElementById("typeName")?.textContent || "あなた専用タイプ";
+    const scores = getScores();
+    const sorted = getSorted(scores);
+    const top = sorted[0]?.[0];
+
+    // Insert printable cover at top of result section
+    if(!document.getElementById("resultCover")){
+      const cover = document.createElement("div");
+      cover.className = "result-cover generated";
+      cover.id = "resultCover";
+      cover.innerHTML = `
+        <div class="result-date">診断日：${todayString()}</div>
+        <div class="result-cover-title">あなた専用<br><span>ダイエットロードマップ</span></div>
+        <p>あなたの診断タイプ</p>
+        <div class="type-name">${typeName}</div>
+        <p class="small">この結果をもとに、今日からできることから始めていきましょう。</p>
+      `;
+      results.insertBefore(cover, results.firstChild);
+    }
+
+    // Add star scores to cause cards
+    document.querySelectorAll(".rank-card").forEach(card => {
+      if(card.querySelector(".stars")) return;
+      const title = card.querySelector("h3")?.textContent || "";
+      const match = sorted.find(([key]) => title.includes(categories[key].label));
+      if(match){
+        const s = document.createElement("div");
+        s.className = "stars";
+        s.textContent = starScore(match[1]);
+        const score = card.querySelector(".score");
+        if(score) score.insertAdjacentElement("afterend", s);
+      }
+    });
+
+    // Add CTA at the very end
+    if(!document.getElementById("resultCta")){
+      const cta = document.createElement("div");
+      cta.className = "cta-box generated";
+      cta.id = "resultCta";
+      cta.innerHTML = `
+        <h2>次は、実践に進みましょう</h2>
+        <p>診断結果で終わらせず、教科書とワークシートを使って行動に移すことで結果につながります。</p>
+        <p>迷ったときは、この診断結果と現状把握シートを見返してください。</p>
+        <div class="mini-action">今日やることから始める</div>
+      `;
+      results.appendChild(cta);
+    }
+
+    // Scroll to result top after enhancement
+    results.scrollIntoView({behavior:"smooth"});
+  };
+}
+
+</script>
 </body>
 </html>
