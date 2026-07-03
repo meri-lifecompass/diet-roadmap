@@ -3,39 +3,662 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>あなた専用ダイエットロードマップ診断</title>
+  <title>Life Compass｜ダイエットロードマップ診断</title>
   <style>
-    :root{--ivory:#fffaf4;--white:#fff;--pink:#d9798b;--pink-dark:#b95670;--pink-soft:#fff0f3;--gold:#c8a46a;--gold-soft:#f4ead8;--brown:#3d2a1d;--muted:#876f60;--line:#ead7c8;--glass:rgba(255,255,255,.82);--shadow:0 20px 50px rgba(99,65,39,.13)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--brown);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;line-height:1.85;min-height:100vh;background:radial-gradient(circle at 8% 0%,rgba(255,222,216,.95),transparent 27%),radial-gradient(circle at 94% 8%,rgba(246,226,188,.78),transparent 25%),radial-gradient(circle at 50% 100%,rgba(255,239,244,.95),transparent 32%),linear-gradient(135deg,#fffefa 0%,#fff6ef 48%,#fffaf7 100%)}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(115deg,transparent 0 38%,rgba(200,164,106,.18) 38.3% 38.7%,transparent 39% 100%),linear-gradient(45deg,transparent 0 72%,rgba(217,121,139,.10) 72.2% 72.7%,transparent 73% 100%);mix-blend-mode:multiply}.wrap{width:min(1080px,92vw);margin:0 auto;padding:28px 0 70px}.hero,.panel{position:relative;background:var(--glass);border:1px solid rgba(234,215,200,.92);border-radius:34px;box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(10px)}.hero{padding:42px 26px;text-align:center}.hero:after,.panel:after{content:"";position:absolute;inset:10px;border:1px solid rgba(200,164,106,.24);border-radius:28px;pointer-events:none}.ribbon{position:absolute;left:-40px;right:-40px;top:-74px;height:142px;background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(236,192,154,.42),rgba(255,245,238,.2));transform:rotate(-2deg);opacity:.96}.hero>*:not(.ribbon),.panel>*{position:relative;z-index:1}.badge{display:inline-block;padding:7px 16px;border-radius:999px;background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:#fff;font-weight:800;letter-spacing:.10em;font-size:13px}h1,h2,h3{font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;letter-spacing:.04em;line-height:1.45;margin:0}h1{font-size:clamp(30px,6vw,58px);margin:16px 0 10px}h1 span,.pink{color:var(--pink)}.lead{max-width:830px;margin:0 auto;color:var(--muted);font-size:16px}.note{max-width:900px;margin:18px auto 0;text-align:left;padding:13px 16px;border-radius:18px;background:#fff7f8;border:1px solid #f0cfd5;color:#6e5044;font-size:14px}.panel{margin-top:24px;padding:26px}.section-title{display:flex;gap:10px;align-items:center;margin-bottom:16px}.num{min-width:40px;height:40px;border-radius:999px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:#fff;font-weight:900;font-family:Georgia,serif;box-shadow:0 8px 16px rgba(217,121,139,.22)}h2{font-size:clamp(22px,3.4vw,34px)}h3{font-size:clamp(18px,2.4vw,25px)}.sub{color:var(--muted);margin-top:-6px}.progress-wrap{margin:20px auto 0;max-width:760px}.progress-text{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-weight:800;margin-bottom:8px}.progress-bar{height:9px;border-radius:999px;background:#f2dfe4;overflow:hidden}.progress-fill{height:100%;width:25%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:999px;transition:.35s ease}.form-row{display:grid;gap:12px;margin-top:14px}@media(min-width:760px){.form-row{grid-template-columns:repeat(4,1fr)}}.field{display:grid;gap:6px}.field label{font-weight:800;color:var(--muted);font-size:13px}input,select{width:100%;padding:13px 12px;border:1px solid #e9d4c5;border-radius:15px;background:white;color:var(--brown);font-size:16px}.step{display:none}.step.active{display:block;animation:fade .28s ease}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.step-head{display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--line);border-radius:22px;background:rgba(255,250,248,.82);margin:20px 0 14px}.step-head .emoji{font-size:32px}.question{padding:14px;border:1px solid #f0ddd0;background:#fff;border-radius:18px;margin:10px 0}.question-title{font-weight:900;margin-bottom:10px}.options{display:grid;gap:8px}@media(min-width:760px){.options{grid-template-columns:repeat(3,1fr)}}.option{display:flex;align-items:flex-start;gap:9px;padding:11px;border:1px solid #f2ddd6;border-radius:14px;background:#fffaf8;cursor:pointer;min-height:48px;transition:.15s ease;font-weight:700;color:#5d4435}.option:hover{border-color:#e8b8c0;background:#fff4f6}input[type=radio]{margin-top:7px;accent-color:var(--pink)}.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;justify-content:center}button{border:none;border-radius:999px;padding:14px 22px;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:.04em}.primary{background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:#fff;box-shadow:0 10px 22px rgba(207,95,114,.24)}.secondary{background:#fff;color:var(--brown);border:1px solid var(--line)}.hidden{display:none!important}.result-hero{text-align:center;padding:30px 18px;border-radius:26px;border:1px solid #efd0d6;background:radial-gradient(circle at 50% 0%,rgba(217,111,130,.13),transparent 45%),#fff}.type-name{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(28px,5vw,48px);color:var(--pink);font-weight:900;margin:6px 0}.grid{display:grid;gap:14px}@media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,1fr)}.grid.cols-3{grid-template-columns:repeat(3,1fr)}}.card,.rank-card,.month{background:#fff;border:1px solid var(--line);border-radius:22px;padding:17px}.rank-card{display:grid;gap:8px}.rank{display:inline-block;width:max-content;padding:4px 12px;border-radius:999px;background:var(--pink-soft);color:var(--pink-dark);font-weight:900}.score{color:var(--muted);font-size:13px}.meter{height:8px;background:#f1e3db;border-radius:999px;overflow:hidden;margin-top:4px}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold);border-radius:999px}.priority-list{display:grid;gap:10px}.priority-item{display:flex;align-items:center;gap:10px;padding:13px;border:1px solid var(--line);background:#fff7f1;border-radius:16px;font-weight:800}.roadmap{display:grid;gap:14px}@media(min-width:760px){.roadmap{grid-template-columns:repeat(3,1fr)}}.month h3{color:var(--pink);margin-bottom:8px}ul.clean{padding-left:1.2em;margin:8px 0 0}.small{font-size:13px;color:var(--muted)}.evidence{background:#fffaf8;border-left:4px solid var(--gold);padding:14px 16px;border-radius:14px;color:#684f40;font-size:14px}.pill-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}.pill{background:var(--gold-soft);border:1px solid #ead5ae;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:900}.radar{display:grid;gap:10px;margin-top:10px}.radar-row{display:grid;grid-template-columns:120px 1fr 42px;gap:10px;align-items:center;font-size:14px}.bar{height:11px;background:#f0e0d8;border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:999px}.todo{background:#fff7f8;border:1px solid #f0cfd5;border-radius:22px;padding:17px}footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}@media print{body{background:white}.hero,.panel{box-shadow:none}.no-print{display:none!important}.wrap{width:100%;padding:0}}
+    :root{
+      --ivory:#fbf7ef;
+      --white:#fffdf9;
+      --pink:#d88993;
+      --pink-soft:#f6e5e4;
+      --gold:#c6a15b;
+      --brown:#3d2a20;
+      --line:#e5cfa5;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+      color:var(--brown);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.95), transparent 35%),
+        linear-gradient(135deg,#fffdf8 0%,#fbf3e8 48%,#fffaf2 100%);
+    }
+    body:before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(120deg, rgba(198,161,91,.08) 1px, transparent 1px),
+        linear-gradient(40deg, rgba(216,137,147,.06) 1px, transparent 1px);
+      background-size:160px 160px, 220px 220px;
+    }
+    .app{max-width:860px;margin:0 auto;padding:28px 16px 44px}
+    .card{
+      position:relative;
+      background:rgba(255,253,249,.9);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 18px 50px rgba(93,65,38,.10);
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:10px;
+      border:1px solid rgba(198,161,91,.35);
+      border-radius:22px;
+      pointer-events:none;
+    }
+    .hero{text-align:center;padding:48px 24px}
+    .brand{
+      font-family:Georgia,serif;
+      letter-spacing:.12em;
+      color:var(--gold);
+      margin:0 0 10px;
+    }
+    .badge{
+      display:inline-block;
+      border:1px solid var(--line);
+      color:#8b6a37;
+      padding:8px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,.65);
+      margin:6px 0 18px;
+    }
+    h1,h2{
+      font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+      font-weight:500;
+      line-height:1.25;
+      margin:0;
+    }
+    h1{font-size:clamp(34px,7vw,72px)}
+    h1 span{color:var(--pink)}
+    h2{font-size:clamp(26px,5vw,44px);text-align:center;margin-bottom:24px}
+    .lead{font-size:20px;line-height:1.8;margin:24px auto;max-width:620px}
+    .features{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+      margin:26px auto;max-width:650px;
+    }
+    .features span{
+      border:1px solid rgba(198,161,91,.35);
+      border-radius:16px;padding:12px 8px;background:rgba(246,229,228,.35);
+    }
+    button{
+      border:none;border-radius:999px;padding:16px 24px;
+      font-weight:700;font-size:16px;cursor:pointer;
+    }
+    .primary{
+      color:white;
+      background:linear-gradient(135deg,#d98993,#c47b83);
+      box-shadow:0 8px 20px rgba(216,137,147,.28);
+    }
+    .secondary{
+      color:var(--brown);
+      background:#fff7ef;
+      border:1px solid var(--line);
+    }
+    .note{font-size:14px;line-height:1.8;color:#6b5648;margin-top:24px}
+    .hidden{display:none}
+    .progress-wrap{margin-bottom:24px}
+    .progress-text{text-align:right;color:#8a6f51;font-size:14px}
+    .progress{
+      height:10px;background:#f4e5d6;border-radius:999px;overflow:hidden;margin-top:8px;
+    }
+    #bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--pink));transition:.25s}
+    #questionTitle{
+      text-align:left;font-size:26px;margin-bottom:22px;
+    }
+    .answers{display:grid;gap:12px}
+    .answer{
+      display:flex;align-items:flex-start;gap:10px;
+      padding:15px 16px;border:1px solid #ead8c1;border-radius:18px;
+      background:#fffdf9;cursor:pointer;
+    }
+    .answer input{margin-top:3px;accent-color:var(--pink)}
+    .answer.selected{border-color:var(--pink);background:#fff1f2}
+    .nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
+    .nav button{flex:1}
+    .result-box{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.72);
+      border-radius:22px;
+      padding:20px;
+      margin:18px 0;
+    }
+    .rank{
+      display:inline-block;
+      color:white;background:var(--pink);
+      border-radius:999px;padding:6px 14px;font-weight:700;margin-bottom:8px;
+    }
+    .result-box h3{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:26px;margin:4px 0 12px}
+    .result-box p{line-height:1.9}
+    .result-box ul{line-height:2;padding-left:1.2em}
+    .roadmap{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;
+    }
+    .month{background:#fff7f2;border:1px solid #ead8c1;border-radius:16px;padding:14px;line-height:1.7}
+    @media(max-width:640px){
+      .app{padding:16px 10px 32px}
+      .card{padding:22px 16px;border-radius:22px}
+      .hero{padding:38px 16px}
+      .features,.roadmap{grid-template-columns:1fr}
+      h1{font-size:42px}
+      .lead{font-size:17px}
+    }
+    @media print{
+      body{background:white}
+      #restartBtn,#printBtn{display:none}
+      .card{box-shadow:none;border:none}
+    }
+  
+    /* ===== Mobile / responsive final fix ===== */
+    .answers{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      width:100%;
+    }
+    .answer{
+      width:100%;
+      min-width:0;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:12px;
+      white-space:normal;
+      word-break:keep-all;
+      overflow-wrap:break-word;
+      writing-mode:horizontal-tb;
+      line-break:strict;
+    }
+    .answer span{
+      display:block;
+      min-width:0;
+      flex:1 1 auto;
+      white-space:normal;
+      word-break:keep-all;
+      overflow-wrap:break-word;
+      writing-mode:horizontal-tb;
+      line-height:1.65;
+    }
+    .answer input[type="radio"],
+    .answer input[type="checkbox"]{
+      width:22px !important;
+      height:22px !important;
+      min-width:22px !important;
+      flex:0 0 22px !important;
+      padding:0 !important;
+      margin:0 !important;
+      accent-color:var(--pink);
+    }
+    .answer input[type="number"]{
+      width:100%;
+      min-width:0;
+    }
+    #questionTitle{
+      word-break:keep-all;
+      overflow-wrap:break-word;
+      line-break:strict;
+      font-size:clamp(20px, 5.2vw, 26px);
+    }
+    .question-card,.card,.result-box{
+      max-width:100%;
+      overflow:hidden;
+    }
+    @media(max-width:759px){
+      .app{padding:18px 12px 40px;}
+      .card{padding:18px 16px;border-radius:24px;}
+      h1{font-size:30px;line-height:1.45;}
+      .subtitle{font-size:14px;}
+      .answer{padding:13px 14px;font-size:15px;}
+      .nav{flex-direction:column;}
+      .nav button{width:100%;}
+      .features,.roadmap{grid-template-columns:1fr !important;}
+    }
+
+  
+    /* ===== Print only diagnosis result ===== */
+    @media print{
+      body{background:white!important;}
+      body *{visibility:hidden!important;}
+      #results, #results *{visibility:visible!important;}
+      #results{
+        position:absolute!important;
+        left:0!important;
+        top:0!important;
+        width:100%!important;
+        box-shadow:none!important;
+        border:none!important;
+        background:white!important;
+      }
+      #results:after{display:none!important;}
+      .no-print{display:none!important;}
+    }
+
+    /* ===== One question per screen adjustments ===== */
+    .single-question-mode .question{
+      display:none;
+    }
+    .single-question-mode .question.current-question{
+      display:block;
+      animation:fade .25s ease;
+    }
+    .question-count{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:10px;
+      text-align:center;
+    }
+    .question-current-title{
+      text-align:center;
+      margin:10px 0 16px;
+    }
+    .single-question-mode .options{
+      grid-template-columns:1fr!important;
+      max-width:520px;
+      margin:0 auto;
+    }
+    .single-question-mode .option{
+      min-height:58px;
+      font-size:16px;
+      justify-content:flex-start;
+    }
+    .single-nav{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
   </style>
 </head>
 <body>
-<main class="wrap">
-  <header class="hero"><div class="ribbon"></div><span class="badge">購入者限定特典</span><h1>あなた専用<br><span>ダイエットロードマップ診断</span></h1><p class="lead">24問に答えるだけで、今のあなたに必要な「痩せない原因」「改善の優先順位」「90日ロードマップ」が分かります。</p><div class="note">※この診断は一般的な健康・ダイエット知識をもとにしたセルフチェックです。医療的な診断・治療を目的とするものではありません。</div><div class="progress-wrap no-print"><div class="progress-text"><span id="progressLabel">STEP 1 / 4</span><span id="progressPercent">25%</span></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div></header>
-  <section class="panel no-print" id="diagnosisForm"><div class="section-title"><span class="num">1</span><h2>診断スタート</h2></div><p class="sub">基本情報を入力すると、基礎代謝・TDEEの目安も表示できます。未入力でも診断は可能です。</p><div class="form-row"><div class="field"><label for="age">年齢</label><input id="age" type="number" min="10" max="99" placeholder="例：27"></div><div class="field"><label for="sex">性別</label><select id="sex"><option value="female">女性</option><option value="male">男性</option></select></div><div class="field"><label for="height">身長(cm)</label><input id="height" type="number" min="100" max="230" placeholder="例：153"></div><div class="field"><label for="weight">体重(kg)</label><input id="weight" type="number" min="20" max="250" step="0.1" placeholder="例：47"></div></div><div class="form-row"><div class="field"><label for="activity">普段の活動量</label><select id="activity"><option value="1.2">かなり少ない（座りっぱなし）</option><option value="1.375">少なめ（軽い移動・家事）</option><option value="1.55" selected>普通（週1〜3回運動）</option><option value="1.725">多い（週4回以上運動）</option></select></div><div class="field"><label for="goal">今一番叶えたいこと</label><select id="goal"><option value="fatloss" selected>体脂肪を落としたい</option><option value="shape">見た目を引き締めたい</option><option value="maintain">リバウンドせず維持したい</option></select></div></div><div id="steps"></div><div class="btns"><button class="secondary" type="button" id="prevBtn" onclick="prevStep()">戻る</button><button class="primary" type="button" id="nextBtn" onclick="nextStep()">次へ</button><button class="primary hidden" type="button" id="diagnoseBtn" onclick="diagnose()">診断結果を見る</button><button class="secondary" type="button" onclick="resetForm()">リセット</button></div></section>
-  <section class="panel hidden" id="results"><div class="result-hero"><div class="small">診断結果</div><div class="type-name" id="typeName"></div><p id="typeSummary"></p><div class="pill-list" id="topPills"></div></div></section><footer>© ダイエット卒業の教科書</footer>
-</main>
-<script>
-const categories={food:{label:"食事バランス",icon:"🍽️",causeTitle:"食事の内容・量が整っていない",causeText:"摂取カロリーや栄養バランスが安定していないと、体脂肪が落ちにくくなります。",priority:"食事を整える",action:"主食・タンパク質・野菜をそろえ、間食や飲み物も記録する",todo:"今日食べたものを、飲み物・間食まで含めて記録する",chapter:"第3章「痩せる食事」",advice:"食事を大きく減らす前に、まずは内容を見える化しましょう。タンパク質・野菜・主食のバランスを整えることで、我慢ではなく続けられる食事に近づきます。"},activity:{label:"活動量不足",icon:"🚶",causeTitle:"日常の消費カロリーが少ない",causeText:"座り時間が長く歩数が少ないと、消費カロリーが不足しやすくなります。",priority:"日常の活動量を増やす",action:"今より+1,000〜2,000歩を目安に増やす",todo:"今日の歩数を確認して、明日は+1,000歩を目標にする",chapter:"第4章「痩せる運動と生活習慣」",advice:"食事をさらに減らす前に、日常の動きを増やすことが優先です。歩数・階段・家事など小さな活動を増やすだけでも、消費カロリーの底上げにつながります。"},sleep:{label:"睡眠・生活リズム",icon:"🌙",causeTitle:"睡眠不足で食欲や行動が乱れやすい",causeText:"睡眠不足は食欲・間食・疲労感に影響し、食事管理や活動量アップを難しくします。",priority:"睡眠と生活リズムを整える",action:"起床時間をそろえ、寝る前のスマホ時間を減らす",todo:"今夜の寝る時間を決めて、寝る30分前はスマホを閉じる",chapter:"第4章「痩せる運動と生活習慣」",advice:"睡眠が乱れると、食欲や疲労感に影響しやすくなります。まずは起床時間をそろえ、寝る前のスマホや夜更かしを少しずつ減らしていきましょう。"},stress:{label:"ストレス・メンタル",icon:"💭",causeTitle:"ストレスで食欲や継続力が乱れやすい",causeText:"我慢が続くと反動で食べやすくなり、ダイエットが短期集中で終わりやすくなります。",priority:"ストレス対策を作る",action:"食べる以外のリセット方法を3つ用意する",todo:"食べる以外のリセット方法を1つ決める",chapter:"第5章「リバウンドしない思考」",advice:"完璧にやろうとすると、できなかった日の反動が大きくなります。食べる以外のストレス解消法を持ち、70点でも続けることを目指しましょう。"},restriction:{label:"過去の極端な食事制限",icon:"⚠️",causeTitle:"食事制限の反動が起きやすい",causeText:"極端な制限を繰り返すと、活動量低下や反動食いにつながり、長期的に続きにくくなります。",priority:"食べながら整える",action:"摂取カロリーを下げすぎず、まずは記録して現状を把握する",todo:"食事を減らす前に、現状把握シートに今の食事量を書く",chapter:"第1章「ダイエットの大原則」",advice:"過去に極端な食事制限を繰り返してきた人ほど、さらに減らすより整えることが大切です。まずは適切な摂取量を知り、食べながら体を戻していきましょう。"},muscle:{label:"筋力・体づくり不足",icon:"💪",causeTitle:"見た目を変える土台が不足している",causeText:"体重だけを落としても、筋肉量が少ないと引き締まりにくく、理想の見た目に近づきにくいことがあります。",priority:"筋トレを取り入れる",action:"週2回、下半身・背中・お尻を中心に軽い筋トレを始める",todo:"スクワット・ヒップリフトなど下半身トレを1種目だけ試す",chapter:"第4章「痩せる運動と生活習慣」",advice:"見た目を変えたいなら、体重だけでなく筋肉を維持することも大切です。下半身・背中・お尻を中心に、無理のない筋トレを取り入れていきましょう。"}};
-const stepGroups=[{title:"食事・活動量",icon:"🍽️",items:[["食事記録をしても、間食・飲み物・調味料を入れ忘れることが多い","food"],["タンパク質や野菜が不足していると感じる","food"],["忙しい日は、パン・麺・お菓子だけで済ませることがある","food"],["外食やコンビニで何を選べばいいか分からない","food"],["運動しない日の歩数が少ない、または座っている時間が長い","activity"],["移動は車・エレベーター中心で、日常であまり動かない","activity"]]},{title:"活動量・睡眠",icon:"🌙",items:[["運動はしているけど、それ以外の時間はほとんど座っている","activity"],["食事を減らしているのに、生活全体の活動量は少ない","activity"],["睡眠時間が6時間未満の日が多い","sleep"],["寝不足の日ほど甘いものや高カロリーなものを食べたくなる","sleep"],["起床・就寝時間が日によって大きくバラバラ","sleep"],["疲れていて運動や自炊を後回しにしやすい","sleep"]]},{title:"ストレス・過去の制限",icon:"💭",items:[["ストレスが溜まると食べて発散しやすい","stress"],["体重が増えると落ち込み、極端な調整をしたくなる","stress"],["完璧にできないと、もういいやと投げ出しやすい","stress"],["毎日体重に一喜一憂して、気持ちが左右されやすい","stress"],["過去に糖質制限・断食・置き換えなどを短期間で頑張ったことがある","restriction"],["食べる量を減らして痩せても、反動で戻った経験がある","restriction"]]},{title:"食事制限・体づくり",icon:"💪",items:[["今も「もっと食べる量を減らさないと」と思いやすい","restriction"],["ダイエット中は外食やお菓子に罪悪感を持ちやすい","restriction"],["筋トレより有酸素や食事制限を優先しがち","muscle"],["体重は落ちても、見た目が思うように変わらなかった経験がある","muscle"],["お尻・背中・脚などの筋トレ習慣がほとんどない","muscle"],["引き締めたいけど、何から筋トレすればいいか分からない","muscle"]]}];
-const answers=[{label:"当てはまらない",value:0},{label:"少し当てはまる",value:1},{label:"かなり当てはまる",value:2}];let currentStep=0;
-function renderSteps(){const root=document.getElementById("steps");root.innerHTML="";let qIndex=0;stepGroups.forEach((group,stepIndex)=>{const step=document.createElement("div");step.className="step";step.id=`step${stepIndex}`;step.innerHTML=`<div class="step-head"><span class="emoji">${group.icon}</span><div><h3>STEP ${stepIndex+1}：${group.title}</h3><div class="small">直近1〜2ヶ月の自分に近いものを選んでください。</div></div></div>`;group.items.forEach(item=>{const [text,category]=item;const div=document.createElement("div");div.className="question";div.dataset.category=category;div.innerHTML=`<div class="question-title">Q${qIndex+1}. ${text}</div><div class="options">${answers.map(a=>`<label class="option"><input type="radio" name="q${qIndex}" value="${a.value}" ${a.value===0?"checked":""}><span>${a.label}</span></label>`).join("")}</div>`;step.appendChild(div);qIndex++});root.appendChild(step)});updateStep()}
-function updateStep(){document.querySelectorAll(".step").forEach((el,i)=>el.classList.toggle("active",i===currentStep));document.getElementById("prevBtn").style.display=currentStep===0?"none":"inline-block";document.getElementById("nextBtn").classList.toggle("hidden",currentStep===stepGroups.length-1);document.getElementById("diagnoseBtn").classList.toggle("hidden",currentStep!==stepGroups.length-1);const percent=Math.round(((currentStep+1)/stepGroups.length)*100);document.getElementById("progressLabel").textContent=`STEP ${currentStep+1} / ${stepGroups.length}`;document.getElementById("progressPercent").textContent=`${percent}%`;document.getElementById("progressFill").style.width=`${percent}%`}
-function nextStep(){if(currentStep<stepGroups.length-1){currentStep++;updateStep();document.getElementById("diagnosisForm").scrollIntoView({behavior:"smooth"})}}function prevStep(){if(currentStep>0){currentStep--;updateStep();document.getElementById("diagnosisForm").scrollIntoView({behavior:"smooth"})}}
-function getScores(){const scores={};Object.keys(categories).forEach(k=>scores[k]=0);let index=0;stepGroups.forEach(group=>group.items.forEach(item=>{const cat=item[1];const checked=document.querySelector(`input[name="q${index}"]:checked`);scores[cat]+=Number(checked?.value||0);index++}));return scores}function calcBmrTdee(){const age=Number(document.getElementById("age").value),sex=document.getElementById("sex").value,height=Number(document.getElementById("height").value),weight=Number(document.getElementById("weight").value),activity=Number(document.getElementById("activity").value);if(!age||!height||!weight)return null;const bmr=sex==="female"?10*weight+6.25*height-5*age-161:10*weight+6.25*height-5*age+5;return{bmr:Math.round(bmr),tdee:Math.round(bmr*activity)}}function getSorted(scores){return Object.entries(scores).sort((a,b)=>b[1]-a[1])}
-function typeByTop(top,second){const map={food:{name:"🍽️ 食事改善タイプ",summary:"食事量だけでなく、食事の内容・記録・バランスを整えることで結果につながりやすいタイプです。"},activity:{name:"🚶 活動量アップタイプ",summary:"食事をさらに減らすより、日常の消費カロリーを増やすことが近道になりやすいタイプです。"},sleep:{name:"🌙 生活リズム改善タイプ",summary:"睡眠や生活リズムを整えることで、食欲・疲労感・継続力が安定しやすいタイプです。"},stress:{name:"💭 メンタル整えタイプ",summary:"完璧主義やストレス食いの影響を受けやすいため、無理なく続ける仕組みづくりが大切なタイプです。"},restriction:{name:"🌿 食べながら整えるタイプ",summary:"過去の制限やリバウンド経験から、さらに減らすよりも適切に食べて整えることが大切なタイプです。"},muscle:{name:"💪 体づくり強化タイプ",summary:"体重だけでなく見た目を変えるために、筋肉を維持・育てる習慣が効果的なタイプです。"}};if(top==="food"&&second==="restriction")return{name:"🍽️ 食事リセットタイプ",summary:"食事を減らすことより、食事の質と量を整え直すことが結果につながりやすいタイプです。"};if(top==="activity"&&second==="muscle")return{name:"🚶‍♀️ 動いて引き締めるタイプ",summary:"日常の活動量と筋トレを組み合わせることで、体重だけでなく見た目も変わりやすいタイプです。"};if(top==="sleep"&&second==="stress")return{name:"🌙 整えて痩せるタイプ",summary:"睡眠・ストレス・生活リズムを整えることで、食欲や行動が安定しやすいタイプです。"};return map[top]}
-function makeRoadmap(keys,goal){const [first,second,third]=keys;return[[`最優先：${categories[first].priority}`,categories[first].action,"体重・体型・食事量を記録して、現状を見える化する"],[`次に：${categories[second].priority}`,categories[second].action,goal==="shape"?"週2回の筋トレで見た目の変化を作る":"週ごとに変化を確認し、やり方を微調整する"],[`仕上げ：${categories[third].priority}`,categories[third].action,goal==="maintain"?"リバウンドしない生活パターンを固定する":"無理なく続けられる習慣だけを残す"]]}
-function makeAdvice(top,second,calc){let text=categories[top].advice;text+=` その次に「${categories[second].priority}」を加えると、より安定して進めやすくなります。`;if(calc)text+=` 参考として、あなたの推定基礎代謝は約${calc.bmr}kcal、推定TDEEは約${calc.tdee}kcalです。これは目安なので、体重・体型の変化を見ながら調整してください。`;return text}
-function diagnose(){const scores=getScores(),sorted=getSorted(scores),keys=sorted.map(([key])=>key),top=keys[0],second=keys[1];const type=typeByTop(top,second),calc=calcBmrTdee(),goal=document.getElementById("goal").value,roadmap=makeRoadmap(keys,goal);const results=document.getElementById("results");results.classList.remove("hidden");document.getElementById("typeName").textContent=type.name;document.getElementById("typeSummary").textContent=type.summary;document.getElementById("topPills").innerHTML=sorted.slice(0,3).map(([key])=>`<span class="pill">${categories[key].icon} ${categories[key].label}</span>`).join("");results.querySelectorAll(".generated").forEach(el=>el.remove());
-const radar=document.createElement("div");radar.className="generated";radar.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">1</span><h2>スコアバランス</h2></div><div class="card"><div class="radar">${sorted.map(([key,score])=>`<div class="radar-row"><strong>${categories[key].icon} ${categories[key].label}</strong><div class="bar"><span style="width:${Math.round(score/8*100)}%"></span></div><span>${score}/8</span></div>`).join("")}</div></div>`;results.appendChild(radar);
-const cause=document.createElement("div");cause.className="generated";cause.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">2</span><h2>痩せない原因ランキング</h2></div><div class="grid cols-3">${sorted.slice(0,3).map(([key,score],i)=>`<div class="rank-card"><span class="rank">${i+1}位</span><h3>${categories[key].icon} ${categories[key].label}</h3><div class="score">スコア：${score}点 / 8点</div><div class="meter"><span style="width:${Math.round(score/8*100)}%"></span></div><strong>${categories[key].causeTitle}</strong><p>${categories[key].causeText}</p></div>`).join("")}</div>`;results.appendChild(cause);
-const priority=document.createElement("div");priority.className="generated";priority.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">3</span><h2>改善の優先順位</h2></div><p class="small">原因説明とは分けて、ここでは「何から取り組むか」だけを表示します。</p><div class="priority-list">${keys.slice(0,5).map((key,i)=>`<div class="priority-item"><span class="rank">${i+1}</span><span>${categories[key].icon} ${categories[key].priority}</span></div>`).join("")}</div>`;results.appendChild(priority);
-const road=document.createElement("div");road.className="generated";road.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">4</span><h2>あなた専用90日ロードマップ</h2></div><div class="roadmap">${roadmap.map((items,idx)=>`<div class="month"><h3>${idx+1}ヶ月目</h3><ul class="clean">${items.map(item=>`<li>${item}</li>`).join("")}</ul></div>`).join("")}</div>`;results.appendChild(road);
-const advice=document.createElement("div");advice.className="generated";advice.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">5</span><h2>あなたへのアドバイス</h2></div><div class="card"><p>${makeAdvice(top,second,calc)}</p></div>`;results.appendChild(advice);
-const todo=document.createElement("div");todo.className="generated";todo.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">6</span><h2>今日やること</h2></div><div class="todo"><ul class="clean"><li>${categories[top].todo}</li><li>教科書の ${categories[top].chapter} を読み返す</li><li>現状把握シートに今日の記録を書く</li></ul></div>`;results.appendChild(todo);
-const evidence=document.createElement("div");evidence.className="generated";evidence.innerHTML=`<div class="section-title" style="margin-top:22px;"><span class="num">7</span><h2>根拠メモ</h2></div><div class="evidence"><ul class="clean"><li>体重管理は、摂取エネルギーと消費エネルギーの長期的なバランスが土台です。</li><li>健康的な減量には、食事だけでなく身体活動・睡眠・ストレス管理も関わります。</li><li>減量後は身体が省エネになりやすく、食欲や消費エネルギーの変化が起こるため、短期集中ではなく続けられる習慣が重要です。</li></ul><p class="small">参考：CDC、NIH/NCBIの体重管理・睡眠・減量維持に関する情報をもとに、教材用に分かりやすく整理しています。</p></div><div class="btns no-print"><button class="primary" type="button" onclick="window.print()">結果をPDF保存/印刷する</button><button class="secondary" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">最初に戻る</button></div>`;results.appendChild(evidence);results.scrollIntoView({behavior:"smooth"})}
-function resetForm(){currentStep=0;updateStep();document.querySelectorAll('input[type="radio"][value="0"]').forEach(el=>el.checked=true);["age","height","weight"].forEach(id=>document.getElementById(id).value="");document.getElementById("results").classList.add("hidden");document.querySelectorAll(".generated").forEach(el=>el.remove());window.scrollTo({top:0,behavior:"smooth"})}renderSteps();
-</script>
+  <main class="app">
+    <section id="start" class="card hero">
+      <p class="brand">Life Compass</p>
+      <p class="badge">教科書購入者限定特典</p>
+      <h1>あなた専用<br><span>ダイエットロードマップ診断</span></h1>
+      <p class="lead">今のあなたが、最初に取り組むべきことがわかる。</p>
+      <div class="features">
+        <span>現在地分析</span>
+        <span>優先順位TOP3</span>
+        <span>90日ロードマップ</span>
+      </div>
+      <button id="startBtn" class="primary">診断をスタートする</button>
+      <p class="note">「何をやるか」よりも「何からやるか」。あなたに合う順番を見つけましょう。</p>
+    </section>
+
+    <section id="quiz" class="card hidden">
+      <div class="progress-wrap">
+        <div class="progress-text"><span id="qCount"></span></div>
+        <div class="progress"><div id="bar"></div></div>
+      </div>
+      <h2 id="questionTitle"></h2>
+      <div id="questionBody" class="answers"></div>
+      <div class="nav">
+        <button id="backBtn" class="secondary">戻る</button>
+        <button id="nextBtn" class="primary">次へ</button>
+      </div>
+    </section>
+
+    <section id="result" class="card hidden">
+      <p class="brand">Life Compass</p>
+      <h2>あなた専用<br>ダイエットロードマップ</h2>
+      <div id="resultContent"></div>
+      <button id="restartBtn" class="secondary">もう一度診断する</button>
+      <button id="printBtn" class="primary">PDF保存・印刷する</button>
+    </section>
+  </main>
+
+  <script>
+    const categories = [
+      "食事量改善","栄養バランス改善","活動量UP","ボディメイク",
+      "睡眠改善","ストレスケア","環境づくり","継続の工夫"
+    ];
+
+    const questions = [
+      {id:"age", title:"年齢を選んでください", type:"single", options:["18歳未満","18〜29歳","30〜39歳","40〜49歳","50歳以上"], score:{}},
+      {id:"height", title:"身長を入力してください", type:"number", unit:"cm", score:{}},
+      {id:"weight", title:"現在の体重を入力してください", type:"number", unit:"kg", score:{}},
+      {id:"goalWeight", title:"目標体重を入力してください", type:"number", unit:"kg", score:{}},
+      {id:"goal", title:"今一番叶えたいことは？", type:"single", options:["体重を落としたい","見た目を変えたい","健康になりたい","リバウンドしない身体を作りたい","まだ分からない"], score:{}},
+      {id:"worry", title:"今一番悩んでいることは？（最大2つ）", type:"multi", max:2, options:["体重","体脂肪","下腹","下半身","姿勢","肩こり・腰痛","リバウンド","健康"], score:{
+        "下腹":{"ボディメイク":6},"下半身":{"ボディメイク":6},"姿勢":{"ボディメイク":7},"肩こり・腰痛":{"ボディメイク":5},"リバウンド":{"継続の工夫":6}
+      }},
+      {id:"state", title:"今の自分に一番近いものは？", type:"single", options:["何から始めたらいいか分からない","頑張っているのに痩せない","続かない","リバウンドを繰り返している","体重より見た目を変えたい"], score:{
+        "何から始めたらいいか分からない":{"継続の工夫":6},
+        "頑張っているのに痩せない":{"栄養バランス改善":4,"活動量UP":4},
+        "続かない":{"継続の工夫":8},
+        "リバウンドを繰り返している":{"継続の工夫":8,"食事量改善":3},
+        "体重より見た目を変えたい":{"ボディメイク":8}
+      }},
+      {id:"full", title:"満腹になるまで食べることが多いですか？", type:"single", options:["毎回","よくある","時々","ほとんどない"], score:{
+        "毎回":{"食事量改善":10},"よくある":{"食事量改善":8},"時々":{"食事量改善":4}
+      }},
+      {id:"notHungry", title:"空腹ではないのに食べることがありますか？", type:"single", options:["よくある","時々","ほとんどない"], score:{
+        "よくある":{"食事量改善":8,"ストレスケア":2},"時々":{"食事量改善":4,"ストレスケア":1}
+      }},
+      {id:"snack", title:"間食はどのくらいしますか？", type:"single", options:["1日2回以上","1日1回","週2〜3回","ほとんどしない"], score:{
+        "1日2回以上":{"食事量改善":10},"1日1回":{"食事量改善":6},"週2〜3回":{"食事量改善":3}
+      }},
+      {id:"drink", title:"甘い飲み物を飲みますか？", type:"single", options:["毎日","週3〜5回","週1〜2回","ほとんど飲まない"], score:{
+        "毎日":{"食事量改善":8},"週3〜5回":{"食事量改善":5},"週1〜2回":{"食事量改善":2}
+      }},
+      {id:"night", title:"夜21時以降に食事をすることがありますか？", type:"single", options:["ほぼ毎日","週3〜5回","週1〜2回","ほとんどない"], score:{
+        "ほぼ毎日":{"食事量改善":6,"環境づくり":3},"週3〜5回":{"食事量改善":4,"環境づくり":2},"週1〜2回":{"食事量改善":2}
+      }},
+      {id:"speed", title:"食べるスピードは？", type:"single", options:["10分以内","10〜20分","20分以上"], score:{
+        "10分以内":{"食事量改善":6},"10〜20分":{"食事量改善":2}
+      }},
+      {id:"protein", title:"毎食たんぱく質を食べていますか？", type:"single", options:["ほとんど食べない","1食だけ","2食","3食"], score:{
+        "ほとんど食べない":{"栄養バランス改善":10},"1食だけ":{"栄養バランス改善":6},"2食":{"栄養バランス改善":2}
+      }},
+      {id:"vege", title:"野菜・きのこ・海藻類を食べていますか？", type:"single", options:["ほとんど食べない","1食だけ","2食","3食以上"], score:{
+        "ほとんど食べない":{"栄養バランス改善":8},"1食だけ":{"栄養バランス改善":5},"2食":{"栄養バランス改善":2}
+      }},
+      {id:"water", title:"水分は1日どのくらい飲みますか？", type:"single", options:["1L未満","1〜1.5L","1.5L以上"], score:{
+        "1L未満":{"栄養バランス改善":6},"1〜1.5L":{"栄養バランス改善":3}
+      }},
+      {id:"breakfast", title:"朝食を食べていますか？", type:"single", options:["ほとんど食べない","食べたり食べなかったり","毎日食べる"], score:{
+        "ほとんど食べない":{"栄養バランス改善":5,"環境づくり":2},"食べたり食べなかったり":{"栄養バランス改善":3}
+      }},
+      {id:"outside", title:"外食・コンビニを利用する頻度は？", type:"single", options:["ほぼ毎日","週3〜5回","週1〜2回","ほとんどない"], score:{
+        "ほぼ毎日":{"環境づくり":6,"栄養バランス改善":4},"週3〜5回":{"環境づくり":4,"栄養バランス改善":2}
+      }},
+      {id:"steps", title:"平均歩数はどのくらいですか？", type:"single", options:["1000歩未満","3000歩未満","5000歩未満","8000歩以上"], score:{
+        "1000歩未満":{"活動量UP":10},"3000歩未満":{"活動量UP":8},"5000歩未満":{"活動量UP":5}
+      }},
+      {id:"work", title:"仕事や日中の過ごし方は？", type:"single", options:["座っている時間が長い","立ち仕事が多い","半々くらい","よく動く"], score:{
+        "座っている時間が長い":{"活動量UP":6},"半々くらい":{"活動量UP":2}
+      }},
+      {id:"exerciseReason", title:"運動できない理由に近いものは？", type:"single", options:["時間がない","苦手","続かない","何をしたらいいか分からない","必要性を感じない"], score:{
+        "時間がない":{"活動量UP":4,"環境づくり":6},
+        "苦手":{"活動量UP":6,"継続の工夫":3},
+        "続かない":{"活動量UP":4,"継続の工夫":6},
+        "何をしたらいいか分からない":{"活動量UP":5,"継続の工夫":5},
+        "必要性を感じない":{"活動量UP":3}
+      }},
+      {id:"bodySatisfaction", title:"現在の体重には満足していますか？", type:"single", options:["満足","少し不満","かなり不満"], score:{
+        "少し不満":{"食事量改善":3},"かなり不満":{"食事量改善":6}
+      }},
+      {id:"parts", title:"見た目で気になる部位は？（最大3つ）", type:"multi", max:3, options:["下腹","下半身","お尻","二の腕","背中","姿勢","顔"], score:{
+        "下腹":{"ボディメイク":7},"下半身":{"ボディメイク":7},"お尻":{"ボディメイク":6},"二の腕":{"ボディメイク":5},"背中":{"ボディメイク":5},"姿勢":{"ボディメイク":7},"顔":{"食事量改善":2}
+      }},
+      {id:"posture", title:"姿勢で気になることは？", type:"multi", max:3, options:["反り腰","猫背","巻き肩","ストレートネック","分からない","特になし"], score:{
+        "反り腰":{"ボディメイク":8},"猫背":{"ボディメイク":6},"巻き肩":{"ボディメイク":6},"ストレートネック":{"ボディメイク":5},"分からない":{"ボディメイク":2}
+      }},
+      {id:"condition", title:"身体の不調はありますか？", type:"multi", max:3, options:["肩こり","腰痛","むくみ","冷え","特になし"], score:{
+        "肩こり":{"ボディメイク":4,"ストレスケア":2},"腰痛":{"ボディメイク":5},"むくみ":{"活動量UP":3,"栄養バランス改善":2},"冷え":{"活動量UP":2,"栄養バランス改善":2}
+      }},
+      {id:"sleep", title:"平均睡眠時間は？", type:"single", options:["5時間未満","5〜6時間","6〜7時間","7時間以上"], score:{
+        "5時間未満":{"睡眠改善":10},"5〜6時間":{"睡眠改善":6},"6〜7時間":{"睡眠改善":3}
+      }},
+      {id:"sleepReason", title:"睡眠不足の理由に近いものは？", type:"single", options:["仕事","育児","スマホ","夜更かし","その他"], score:{
+        "仕事":{"睡眠改善":6,"環境づくり":6},
+        "育児":{"睡眠改善":6,"環境づくり":8,"ストレスケア":2},
+        "スマホ":{"睡眠改善":8,"継続の工夫":2},
+        "夜更かし":{"睡眠改善":8,"継続の工夫":2},
+        "その他":{"睡眠改善":4}
+      }},
+      {id:"stressEat", title:"ストレスで食べてしまうことがありますか？", type:"single", options:["よくある","時々","ほとんどない"], score:{
+        "よくある":{"ストレスケア":8,"食事量改善":4},"時々":{"ストレスケア":4,"食事量改善":2}
+      }},
+      {id:"stress", title:"最近ストレスを感じていますか？", type:"single", options:["強く感じる","少し感じる","あまり感じない"], score:{
+        "強く感じる":{"ストレスケア":8},"少し感じる":{"ストレスケア":4}
+      }},
+      {id:"relax", title:"リラックスできる時間はありますか？", type:"single", options:["ほとんどない","少しある","十分ある"], score:{
+        "ほとんどない":{"ストレスケア":7,"環境づくり":3},"少しある":{"ストレスケア":3}
+      }},
+      {id:"familyMeal", title:"家族と別メニューは作れますか？", type:"single", options:["作れない","時々ならできる","作れる","一人暮らし"], score:{
+        "作れない":{"環境づくり":8},"時々ならできる":{"環境づくり":4}
+      }},
+      {id:"freeTime", title:"自由に使える時間はどのくらいありますか？", type:"single", options:["30分未満","30〜60分","1時間以上"], score:{
+        "30分未満":{"環境づくり":8},"30〜60分":{"環境づくり":4}
+      }},
+      {id:"busy", title:"今の生活で一番忙しい理由は？", type:"single", options:["仕事","育児","介護","家事","その他"], score:{
+        "仕事":{"環境づくり":6},"育児":{"環境づくり":8,"ストレスケア":2},"介護":{"環境づくり":8,"ストレスケア":3},"家事":{"環境づくり":5}
+      }},
+      {id:"fail", title:"ダイエットが続かなかった一番の理由は？", type:"single", options:["時間がなかった","モチベーションが続かなかった","我慢できなかった","結果が出なかった","方法が分からなかった"], score:{
+        "時間がなかった":{"環境づくり":6,"継続の工夫":4},
+        "モチベーションが続かなかった":{"継続の工夫":8},
+        "我慢できなかった":{"食事量改善":4,"継続の工夫":5},
+        "結果が出なかった":{"継続の工夫":8},
+        "方法が分からなかった":{"継続の工夫":6}
+      }},
+      {id:"support", title:"どんなサポートがあると続けられそうですか？", type:"single", options:["一人でコツコツ","仲間がほしい","記録したい","専門家に相談したい","分からない"], score:{
+        "仲間がほしい":{"継続の工夫":4},
+        "記録したい":{"継続の工夫":2},
+        "専門家に相談したい":{"継続の工夫":3},
+        "分からない":{"継続の工夫":5}
+      }},
+    ];
+
+    const templates = {
+      "食事量改善": {
+        why:"食事量や間食、飲み物などから摂るエネルギーを少し整えることで、変化が出やすい状態です。まずは食事を大きく変えるより、量やタイミングを整えることから始めましょう。",
+        actions:["食事記録を3日だけつける","腹八分目を意識する","甘い飲み物を1日1杯お茶や水に変える"],
+        change:["体重の変化を感じやすくなる","食べ過ぎのクセに気づける","無理な制限をしなくて済む"],
+        message:"全部変えようとしなくて大丈夫。まずは食事量を少し整えることから始めてみましょう。"
+      },
+      "栄養バランス改善": {
+        why:"食事量を減らすことよりも、たんぱく質・野菜・水分などを整えることが優先です。栄養が整うと、満足感や身体づくりにもつながります。",
+        actions:["毎食たんぱく質を1つ入れる","野菜・きのこ・海藻を1品追加する","水分をこまめに飲む"],
+        change:["満足感が増えやすい","筋肉を守りながら痩せやすい","体調が整いやすい"],
+        message:"減らすより、まず整える。栄養バランスを味方につけましょう。"
+      },
+      "活動量UP": {
+        why:"今は激しい運動より、日常生活で動く量を増やすことが変化につながりやすい状態です。まずは歩く・立つ・階段を使うなど、小さな活動量から増やしましょう。",
+        actions:["今より＋2000歩を目指す","30分に1回立ち上がる","近い距離は歩く"],
+        change:["消費エネルギーが増える","むくみが改善しやすい","運動へのハードルが下がる"],
+        message:"運動が苦手でも大丈夫。まずは“生活の中で動く”から始めましょう。"
+      },
+      "ボディメイク": {
+        why:"体重を落とすことだけでなく、姿勢や筋肉を整えることで理想の見た目に近づきやすい状態です。",
+        actions:["気になる部位の宅トレを週2回","ストレッチを5分","ピラティスや姿勢改善を取り入れる"],
+        change:["シルエットが整いやすい","姿勢がきれいに見えやすい","体重以外の変化を感じやすい"],
+        message:"体重だけが正解ではありません。見た目を整える身体づくりも大切なダイエットです。"
+      },
+      "睡眠改善": {
+        why:"睡眠不足は食欲や疲労感にも影響します。時間を大きく増やせなくても、睡眠の質や生活リズムを整える工夫が大切です。",
+        actions:["30分だけ早く寝る日を作る","寝る前のスマホ時間を短くする","朝日を浴びる"],
+        change:["食欲が安定しやすい","疲れにくくなる","日中の活動量が上がりやすい"],
+        message:"忙しくても、できる範囲で睡眠を整えることはダイエットの土台になります。"
+      },
+      "ストレスケア": {
+        why:"ストレスは食欲の増加や睡眠の質の低下につながり、ダイエットにも影響を与えることがあります。まずは自分に合うストレス発散方法を見つけましょう。",
+        actions:["ウォーキングや軽い運動をする","ヨガ・瞑想・深呼吸を試す","趣味やリラックス時間を作る"],
+        change:["ストレス食いが減りやすい","睡眠が整いやすい","継続しやすくなる"],
+        message:"頑張り続けるだけが正解ではありません。ストレスを上手に発散することも、健康的なダイエットの一部です。"
+      },
+      "環境づくり": {
+        why:"今の生活では、気合いで頑張るよりも続けやすい環境を作ることが優先です。忙しい毎日でもできる仕組みに変えていきましょう。",
+        actions:["朝食を固定化する","コンビニ・冷凍食品も活用する","家族と同じメニューで量を調整する"],
+        change:["迷う時間が減る","忙しくても続けやすい","リバウンドしにくい仕組みができる"],
+        message:"もっと頑張るより、続く仕組みを作ることが近道です。"
+      },
+      "継続の工夫": {
+        why:"方法そのものより、続け方を整えることで成功しやすい状態です。完璧を目指さず、小さく続ける設計にしましょう。",
+        actions:["今週やることを3つに絞る","できたことを記録する","完璧ではなく再開を目標にする"],
+        change:["挫折しにくくなる","自己嫌悪が減る","習慣として続きやすい"],
+        message:"続かないのは意志が弱いからではありません。続く仕組みに変えていきましょう。"
+      }
+    };
+
+    let current = 0;
+    let answers = {};
+
+    const start = document.getElementById("start");
+    const quiz = document.getElementById("quiz");
+    const result = document.getElementById("result");
+    const qTitle = document.getElementById("questionTitle");
+    const qBody = document.getElementById("questionBody");
+    const qCount = document.getElementById("qCount");
+    const bar = document.getElementById("bar");
+
+    document.getElementById("startBtn").addEventListener("click", () => {
+      start.classList.add("hidden");
+      quiz.classList.remove("hidden");
+      renderQuestion();
+    });
+    document.getElementById("backBtn").addEventListener("click", () => {
+      if(current > 0){ current--; renderQuestion(); }
+    });
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      const q = questions[current];
+      if(answers[q.id] === undefined || answers[q.id] === "" || (Array.isArray(answers[q.id]) && answers[q.id].length === 0)){
+        alert("回答を選択してください");
+        return;
+      }
+      if(current < questions.length - 1){ current++; renderQuestion(); }
+      else showResult();
+    });
+    document.getElementById("restartBtn").addEventListener("click", () => location.reload());
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+    function renderQuestion(){
+      const q = questions[current];
+      qTitle.textContent = q.title;
+      qCount.textContent = `${current + 1} / ${questions.length}`;
+      bar.style.width = `${((current + 1) / questions.length) * 100}%`;
+      qBody.innerHTML = "";
+
+      if(q.type === "number"){
+        const wrap = document.createElement("label");
+        wrap.className = "answer";
+        wrap.innerHTML = `<input type="number" min="0" step="0.1" value="${answers[q.id] || ""}" placeholder="入力"> <span>${q.unit || ""}</span>`;
+        const input = wrap.querySelector("input");
+        input.addEventListener("input", e => answers[q.id] = e.target.value);
+        qBody.appendChild(wrap);
+        return;
+      }
+
+      q.options.forEach(opt => {
+        const label = document.createElement("label");
+        label.className = "answer";
+        const type = q.type === "multi" ? "checkbox" : "radio";
+        const checked = q.type === "multi"
+          ? (answers[q.id] || []).includes(opt)
+          : answers[q.id] === opt;
+        label.innerHTML = `<input type="${type}" name="${q.id}" ${checked ? "checked" : ""}> <span>${opt}</span>`;
+        label.addEventListener("click", () => {
+          if(q.type === "multi"){
+            const arr = answers[q.id] || [];
+            if(arr.includes(opt)) answers[q.id] = arr.filter(x => x !== opt);
+            else {
+              if(q.max && arr.length >= q.max){ alert(`最大${q.max}つまで選べます`); return; }
+              answers[q.id] = [...arr, opt];
+            }
+          } else {
+            answers[q.id] = opt;
+          }
+          renderQuestion();
+        });
+        if(checked) label.classList.add("selected");
+        qBody.appendChild(label);
+      });
+    }
+
+    function calcScores(){
+      const scores = Object.fromEntries(categories.map(c => [c,0]));
+      questions.forEach(q => {
+        const ans = answers[q.id];
+        if(!ans || !q.score) return;
+        const vals = Array.isArray(ans) ? ans : [ans];
+        vals.forEach(v => {
+          const add = q.score[v];
+          if(add) Object.entries(add).forEach(([cat, pts]) => scores[cat] += pts);
+        });
+      });
+      return scores;
+    }
+
+    function getPhase(){
+      const h = parseFloat(answers.height);
+      const w = parseFloat(answers.weight);
+      const bmi = h ? w / Math.pow(h/100, 2) : null;
+      const goal = answers.goal;
+      const bodySat = answers.bodySatisfaction;
+      const parts = answers.parts || [];
+
+      if(bmi && bmi < 18.5){
+        return {name:"健康優先期", icon:"🤍", text:"現在は減量よりも、栄養バランスや健康的な身体づくりを優先しましょう。"};
+      }
+      if(goal === "体重を落としたい" || bodySat === "かなり不満" || bodySat === "少し不満"){
+        return {name:"減量期", icon:"🌱", text:"現在は体重を落とすことを優先すると、変化を感じやすい時期です。"};
+      }
+      if(goal === "見た目を変えたい" || parts.length > 0){
+        return {name:"ボディメイク期", icon:"💪", text:"現在は体重だけでなく、姿勢や筋肉を整えることで理想の見た目に近づきやすい時期です。"};
+      }
+      return {name:"維持・習慣化期", icon:"🤍", text:"現在はリバウンドを防ぎながら、健康的な習慣を続けることが大切な時期です。"};
+    }
+
+    function fastingCandidate(){
+      return (answers.freeTime === "30分未満" || answers.fail === "結果が出なかった" || answers.fail === "時間がなかった");
+    }
+
+    function showResult(){
+      quiz.classList.add("hidden");
+      result.classList.remove("hidden");
+
+      const scores = calcScores();
+      const top = Object.entries(scores).sort((a,b) => b[1]-a[1]).slice(0,3);
+      const phase = getPhase();
+      let html = `
+        <div class="result-box">
+          <span class="rank">${phase.icon} あなたの現在地</span>
+          <h3>${phase.name}</h3>
+          <p>${phase.text}</p>
+        </div>
+        <h2>今のあなたが取り組む順番</h2>
+      `;
+      const ranks = ["🥇第1優先","🥈第2優先","🥉第3優先"];
+      top.forEach(([cat], i) => {
+        const t = templates[cat];
+        html += `
+          <div class="result-box">
+            <span class="rank">${ranks[i]}</span>
+            <h3>${cat}</h3>
+            <p><strong>なぜ？</strong><br>${t.why}</p>
+            <p><strong>今日からやること</strong></p>
+            <ul>${t.actions.map(x => `<li>${x}</li>`).join("")}</ul>
+            <p><strong>期待できる変化</strong></p>
+            <ul>${t.change.map(x => `<li>${x}</li>`).join("")}</ul>
+            <p>${t.message}</p>
+          </div>
+        `;
+      });
+
+      if(fastingCandidate()){
+        html += `
+          <div class="result-box">
+            <span class="rank">⭐ 条件付きで検討</span>
+            <h3>ファスティング</h3>
+            <p>あなたには、短期間で生活をリセットする方法も選択肢の一つになるかもしれません。興味があれば、正しい方法を学んだ上で検討してみましょう。</p>
+            <p class="note">※妊娠中・授乳中・持病がある方、体調に不安がある方は推奨しません。必要に応じて医師や専門家に相談してください。</p>
+          </div>
+        `;
+      }
+
+      html += `
+        <div class="result-box">
+          <span class="rank">90日ロードマップ</span>
+          <div class="roadmap">
+            <div class="month"><strong>1ヶ月目</strong><br>${top[0][0]}に集中</div>
+            <div class="month"><strong>2ヶ月目</strong><br>${top[1][0]}を追加</div>
+            <div class="month"><strong>3ヶ月目</strong><br>${top[2][0]}を追加</div>
+          </div>
+        </div>
+        <div class="result-box">
+          <h3>最後に</h3>
+          <p>完璧を目指さなくて大丈夫。今日の診断結果は「今のあなた」に合ったスタート地点です。ライフスタイルが変われば、合う方法も変わります。迷った時は、またLife Compassに戻ってきてください。</p>
+        </div>
+      `;
+
+      document.getElementById("resultContent").innerHTML = html;
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+  </script>
 </body>
 </html>
