@@ -4,220 +4,80 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>あなた専用ダイエットロードマップ診断</title>
+<meta name="description" content="痩せない原因・ダイエットの優先順位・90日ロードマップが分かる診断ツール">
 <style>
-:root{--p:#d9798b;--p2:#b95670;--g:#c8a46a;--b:#3d2a1d;--m:#876f60;--l:#ead7c8;--ps:#fff0f3;--gs:#f7edda}
+:root{
+  --pink:#cf7888;--pink2:#aa5568;--pink-soft:#fff0f3;
+  --gold:#bfa26a;--gold-soft:#f7edda;
+  --brown:#3d2a1d;--muted:#806c5f;--line:#ead7c8;
+  --paper:#fffdf9;--white:#fff;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--b);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;line-height:1.8;background:radial-gradient(circle at 8% 0%,#ffe0db,transparent 27%),radial-gradient(circle at 95% 8%,#f4e0bd,transparent 25%),linear-gradient(135deg,#fffefa,#fff6ef 52%,#fffaf7)}
-.wrap{width:min(900px,92vw);margin:auto;padding:26px 0 60px}
-.hero,.panel{background:rgba(255,255,255,.94);border:1px solid var(--l);border-radius:30px;box-shadow:0 18px 46px rgba(99,65,39,.13);overflow:hidden}
-.hero{text-align:center;padding:38px 22px}.panel{margin-top:24px;padding:30px 26px}
-h1,h2,h3{font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;letter-spacing:.04em;line-height:1.45;margin:0}
-h1{font-size:clamp(31px,6vw,56px);margin:16px 0 10px}h1 span,.pink{color:var(--p)}h2{font-size:clamp(24px,4vw,38px)}h3{font-size:clamp(18px,2.4vw,25px)}
-.badge{display:inline-block;padding:7px 16px;border-radius:999px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;font-weight:900;letter-spacing:.1em;font-size:13px}
-.lead{max-width:760px;margin:0 auto;color:var(--m)}.note{max-width:760px;margin:18px auto 0;text-align:left;padding:13px 16px;border-radius:18px;background:#fff7f8;border:1px solid #f0cfd5;color:#6e5044;font-size:14px}
-.progress-wrap{margin:20px auto 0;max-width:760px}.progress-text{display:flex;justify-content:space-between;font-size:13px;color:var(--m);font-weight:900;margin-bottom:8px}.progress-bar{height:9px;border-radius:999px;background:#f2dfe4;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--g));border-radius:999px;transition:.25s}
-.step-box{text-align:center;min-height:390px;display:flex;flex-direction:column;justify-content:center}
-.step-kicker{color:var(--m);font-weight:900;font-size:13px;margin-bottom:10px}
-.step-title{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(25px,5vw,42px);font-weight:900;line-height:1.55;margin:0 auto 18px;max-width:720px}
-.step-sub{color:var(--m);font-size:14px;margin:-4px auto 18px;max-width:620px}
-.input-single{max-width:380px;margin:0 auto}
-.input-wrap{position:relative}.input-wrap input{padding-right:58px}.unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-weight:900;color:var(--b)}
-input,select{width:100%;min-width:0;padding:16px 14px;border:1px solid #e9d4c5;border-radius:17px;background:#fff;color:var(--b);font-size:18px;text-align:center}
-select{text-align:left}
-.choices{display:grid;gap:10px;max-width:560px;margin:0 auto}
-.choice{width:100%;min-height:62px;padding:14px 16px;border:1px solid #f2ddd6;border-radius:18px;background:#fffaf8;color:#5d4435;cursor:pointer;font-weight:900;font-size:16px;text-align:left;display:flex;align-items:center;gap:12px;appearance:none;-webkit-appearance:none}
-.choice:before{content:"";width:22px;height:22px;border:2px solid #d8b9ac;border-radius:50%;background:#fff;flex:0 0 auto}
-.choice:hover,.choice.selected{border-color:#e8aeb9;background:#fff4f6}.choice.selected:before{background:radial-gradient(circle,var(--p) 0 45%,#fff 48%);border-color:var(--p)}
-.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;justify-content:center}button{border:0;border-radius:999px;padding:14px 22px;font-weight:900;font-size:15px;cursor:pointer}
-.primary{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff}.secondary{background:#fff;color:var(--b);border:1px solid var(--l)}.hidden{display:none!important}
-.loading{display:none;text-align:center;padding:50px 20px}.loading.active{display:block}.loader{width:220px;height:9px;background:#f2dfe4;border-radius:999px;margin:18px auto;overflow:hidden}.loader span{display:block;width:45%;height:100%;background:linear-gradient(90deg,var(--p),var(--g));border-radius:999px;animation:load 1.1s infinite ease-in-out}@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(230%)}}
-.result-cover,.result-hero{text-align:center;padding:30px 18px;border-radius:26px;border:1px solid #efd0d6;background:#fff}.result-cover{margin-bottom:22px;background:linear-gradient(135deg,#fffdf9,#fff6ef)}
-.result-cover-title,.type-name{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--p);font-weight:900}.result-cover-title{font-size:clamp(26px,5vw,46px);line-height:1.45;margin:8px 0;color:var(--b)}.result-cover-title span{color:var(--p)}.type-name{font-size:clamp(28px,5vw,48px);margin:6px 0}
-.grid{display:grid;gap:14px}@media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.card,.rank-card,.month,.todo,.cta-box{background:#fff;border:1px solid var(--l);border-radius:22px;padding:17px}.rank-card{display:grid;gap:8px}.rank{display:inline-block;width:max-content;padding:4px 12px;border-radius:999px;background:var(--ps);color:var(--p2);font-weight:900}
-.score,.small{color:var(--m);font-size:13px}.stars{color:var(--g);letter-spacing:.08em;font-weight:900}.meter,.bar{background:#f1e3db;border-radius:999px;overflow:hidden}.meter{height:8px}.bar{height:11px}.meter span,.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--g));border-radius:999px}
-.priority-list{display:grid;gap:10px}.priority-item{display:flex;gap:10px;align-items:center;padding:13px;border:1px solid var(--l);background:#fff7f1;border-radius:16px;font-weight:900}
-.roadmap{display:grid;gap:14px}@media(min-width:760px){.roadmap{grid-template-columns:repeat(3,1fr)}}.month h3{color:var(--p);margin-bottom:8px}ul.clean{padding-left:1.2em;margin:8px 0}
-.evidence{background:#fffaf8;border-left:4px solid var(--g);padding:14px 16px;border-radius:14px;color:#684f40;font-size:14px}.pill-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}.pill{background:var(--gs);border:1px solid #ead5ae;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:900}
-.radar{display:grid;gap:10px}.radar-row{display:grid;grid-template-columns:130px 1fr 46px;gap:10px;align-items:center;font-size:14px}.todo,.cta-box{background:#fff7f8;border-color:#f0cfd5}.cta-box{text-align:center;margin-top:22px}.cta-box h2{color:var(--p)}
-footer{text-align:center;color:var(--m);font-size:12px;margin-top:24px}
-@media(max-width:759px){.wrap{width:94vw;padding:18px 0 46px}.hero,.panel{padding:18px}h1{font-size:32px}.step-box{min-height:360px}.step-title{text-align:left;font-size:24px}.form-row,.grid.cols-3,.roadmap{grid-template-columns:1fr}.radar-row{grid-template-columns:1fr;gap:5px}button{width:100%;max-width:340px}}
-@media print{@page{size:A4;margin:12mm}body{background:#fff!important}body *{visibility:hidden!important}#results,#results *{visibility:visible!important}#results{position:absolute!important;left:0;top:0;width:100%!important;box-shadow:none!important;border:0!important;background:#fff!important;padding:0!important}.no-print{display:none!important}.result-cover{break-after:page}.result-block,.rank-card,.month,.card,.todo,.evidence,.cta-box{break-inside:avoid}}
-
-/* keep question area stable and avoid page jumping */
-#app{scroll-margin-top:0;}
-.step-box{min-height:420px;}
-@media(max-width:759px){.step-box{min-height:390px;}}
-
-
-/* ===== DESIGN POLISHED FINAL ===== */
-:root{
-  --p:#cf7888;
-  --p2:#aa5568;
-  --g:#bfa26a;
-  --b:#3d2a1d;
-  --m:#806c5f;
-  --l:#ead7c8;
-}
 body{
-  letter-spacing:.01em;
+  margin:0;color:var(--brown);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
+  line-height:1.8;background:
+  radial-gradient(circle at 8% 0%,#ffe0db,transparent 27%),
+  radial-gradient(circle at 95% 8%,#f4e0bd,transparent 25%),
+  linear-gradient(135deg,#fffefa,#fff6ef 52%,#fffaf7)
 }
-.wrap{
-  width:min(860px,92vw);
-}
-.hero{
-  padding:34px 24px;
-}
-.hero,.panel{
-  border-radius:32px;
-  box-shadow:0 16px 42px rgba(93,61,38,.10);
-}
-h1{
-  font-size:clamp(28px,4.8vw,48px)!important;
-  line-height:1.35;
-  letter-spacing:.035em;
-}
-h2{
-  font-size:clamp(21px,3.2vw,30px)!important;
-}
-h3{
-  font-size:clamp(17px,2.2vw,23px)!important;
-}
-.lead{
-  font-size:15px;
-  line-height:1.9;
-}
-.note{
-  font-size:13px;
-  line-height:1.8;
-}
-.panel{
-  padding:28px 26px;
-}
-.step-box{
-  min-height:360px!important;
-  justify-content:center;
-}
-.step-kicker{
-  font-size:12px;
-  letter-spacing:.08em;
-  color:var(--g);
-}
-.step-title{
-  font-size:clamp(22px,3.6vw,34px)!important;
-  line-height:1.65!important;
-  letter-spacing:.035em;
-  max-width:720px;
-  text-wrap:pretty;
-  word-break:auto-phrase;
-  overflow-wrap:normal;
-}
-.step-sub{
-  font-size:13px;
-}
-.q-count{
-  font-size:12px;
-  letter-spacing:.08em;
-}
-.choice{
-  min-height:56px;
-  padding:13px 16px;
-  font-size:15px;
-  line-height:1.65;
-  border-radius:16px;
-}
-.choice:before{
-  width:20px;
-  height:20px;
-}
-input,select{
-  font-size:16px;
-  padding:14px 13px;
-  border-radius:14px;
-}
-.btns{
-  margin-top:18px;
-}
-button{
-  padding:12px 20px;
-  font-size:14px;
-}
-.progress-wrap{
-  margin-top:18px;
-}
-.progress-text{
-  font-size:12px;
-}
-.progress-bar{
-  height:8px;
-}
-.result-cover,.result-hero,.card,.rank-card,.month,.todo,.cta-box{
-  border-radius:20px;
-}
-.type-name{
-  font-size:clamp(26px,4.2vw,42px)!important;
-  line-height:1.5;
-}
-.result-cover-title{
-  font-size:clamp(25px,4.4vw,42px)!important;
-}
-.radar-row{
-  font-size:13px;
-}
-p,li{
-  line-height:1.85;
-}
+.wrap{width:min(860px,92vw);margin:auto;padding:24px 0 56px}
+.hero,.panel{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:32px;box-shadow:0 16px 42px rgba(93,61,38,.10);overflow:hidden}
+.hero{text-align:center;padding:34px 24px}.panel{margin-top:22px;padding:28px 26px}
+h1,h2,h3{font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;letter-spacing:.035em;line-height:1.45;margin:0}
+h1{font-size:clamp(28px,4.8vw,48px);line-height:1.35;margin:14px 0 10px}
+h1 span,.pink{color:var(--pink)}
+h2{font-size:clamp(21px,3.2vw,30px)}
+h3{font-size:clamp(17px,2.2vw,23px)}
+.badge{display:inline-block;padding:7px 16px;border-radius:999px;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;font-weight:900;letter-spacing:.1em;font-size:13px}
+.lead{max-width:680px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.9}
+.benefit-list{display:grid;gap:8px;max-width:520px;margin:16px auto 0;text-align:left}
+.benefit-list div{background:#fff7f8;border:1px solid #f0cfd5;border-radius:999px;padding:8px 14px;font-weight:900;font-size:14px}
+.note{max-width:720px;margin:18px auto 0;text-align:left;padding:12px 15px;border-radius:18px;background:#fff7f8;border:1px solid #f0cfd5;color:#6e5044;font-size:13px;line-height:1.8}
+.progress-wrap{margin:18px auto 0;max-width:720px}
+.progress-text{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:900;margin-bottom:8px}
+.progress-bar{height:8px;border-radius:999px;background:#f2dfe4;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:999px;transition:.25s}
+.step-box{min-height:360px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.step-kicker{font-size:12px;letter-spacing:.08em;color:var(--gold);font-weight:900;margin-bottom:10px}
+.step-title{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(19px,2.8vw,28px);line-height:1.75;font-weight:900;max-width:680px;margin:0 auto 18px;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+.step-sub{font-size:13px;color:var(--muted);max-width:620px;margin:-4px auto 18px}
+.input-single{max-width:350px;margin:0 auto}
+.input-wrap{position:relative}.input-wrap input{padding-right:58px}.unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-weight:900;color:var(--brown)}
+input,select{width:100%;min-width:0;padding:14px 13px;border:1px solid #e9d4c5;border-radius:14px;background:#fff;color:var(--brown);font-size:16px;text-align:center}
+.choices{display:grid;gap:10px;max-width:560px;margin:0 auto}
+.choice{width:100%;min-height:58px;padding:13px 16px;border:1px solid #f2ddd6;border-radius:16px;background:#fffaf8;color:#5d4435;cursor:pointer;font-weight:900;font-size:15px;text-align:left;display:flex;align-items:center;gap:12px;appearance:none;-webkit-appearance:none;line-height:1.65}
+.choice:before{content:"";width:20px;height:20px;border:2px solid #d8b9ac;border-radius:50%;background:#fff;flex:0 0 auto}
+.choice:hover,.choice.selected{border-color:#e8aeb9;background:#fff4f6}.choice.selected:before{background:radial-gradient(circle,var(--pink) 0 45%,#fff 48%);border-color:var(--pink)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;justify-content:center}
+button{border:0;border-radius:999px;padding:12px 20px;font-weight:900;font-size:14px;cursor:pointer}
+.primary{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff}.secondary{background:#fff;color:var(--brown);border:1px solid var(--line)}
+.hidden{display:none!important}
+.loading{text-align:center;padding:46px 20px}.loader{width:220px;height:9px;background:#f2dfe4;border-radius:999px;margin:18px auto;overflow:hidden}.loader span{display:block;width:45%;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:999px;animation:load 1.1s infinite ease-in-out}@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(230%)}}
+.result-cover,.result-hero{text-align:center;padding:30px 18px;border-radius:26px;border:1px solid #efd0d6;background:#fff}
+.result-cover{margin-bottom:22px;background:linear-gradient(135deg,#fffdf9,#fff6ef)}
+.result-cover-title,.type-name{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--pink);font-weight:900}
+.result-cover-title{font-size:clamp(25px,4.4vw,42px);line-height:1.45;margin:8px 0;color:var(--brown)}
+.result-cover-title span{color:var(--pink)}.type-name{font-size:clamp(26px,4.2vw,42px);line-height:1.5;margin:6px 0}
+.card,.rank-card,.month,.todo,.cta-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:17px}
+.grid{display:grid;gap:14px}@media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rank-card{display:grid;gap:8px}.rank{display:inline-block;width:max-content;padding:4px 12px;border-radius:999px;background:var(--pink-soft);color:var(--pink2);font-weight:900}
+.score,.small{color:var(--muted);font-size:13px}.stars{color:var(--gold);letter-spacing:.08em;font-weight:900}
+.meter,.bar{background:#f1e3db;border-radius:999px;overflow:hidden}.meter{height:8px}.bar{height:11px}.meter span,.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:999px}
+.priority-list{display:grid;gap:10px}.priority-item{display:flex;gap:10px;align-items:center;padding:13px;border:1px solid var(--line);background:#fff7f1;border-radius:16px;font-weight:900}
+.roadmap{display:grid;grid-template-columns:1fr;gap:14px;max-width:760px;margin:0 auto}.month h3{color:var(--pink);margin-bottom:8px}
+ul.clean{padding-left:1.2em;margin:8px 0}.evidence{background:#fffaf8;border-left:4px solid var(--gold);padding:14px 16px;border-radius:14px;color:#684f40;font-size:14px}
+.pill-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}.pill{background:var(--gold-soft);border:1px solid #ead5ae;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:900}
+.radar{display:grid;gap:10px}.radar-row{display:grid;grid-template-columns:130px 1fr 46px;gap:10px;align-items:center;font-size:13px}
+.todo,.cta-box{background:#fff7f8;border-color:#f0cfd5}.cta-box{text-align:center;margin-top:22px}.cta-box h2{color:var(--pink)}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
 @media(max-width:759px){
-  .wrap{
-    width:94vw;
-    padding:14px 0 40px;
-  }
-  .hero{
-    padding:26px 18px;
-  }
-  .panel{
-    padding:20px 18px;
-  }
-  h1{
-    font-size:28px!important;
-  }
-  .lead{
-    font-size:13px;
-  }
-  .note{
-    font-size:12px;
-  }
-  .step-box{
-    min-height:335px!important;
-  }
-  .step-title{
-    font-size:22px!important;
-    line-height:1.7!important;
-    text-align:left;
-    max-width:100%;
-    word-break:normal;
-    overflow-wrap:anywhere;
-  }
-  .choice{
-    min-height:54px;
-    font-size:14px;
-    line-height:1.6;
-    padding:12px 14px;
-  }
-  .choices{
-    gap:9px;
-  }
-  button{
-    width:100%;
-    max-width:320px;
-    padding:12px 18px;
-  }
-  .input-single{
-    max-width:310px;
-  }
+  .wrap{width:94vw;padding:14px 0 40px}.hero{padding:26px 18px}.panel{padding:20px 18px}h1{font-size:28px}.lead{font-size:13px}.note{font-size:12px}
+  .benefit-list div{font-size:13px}.step-box{min-height:335px}.step-title{text-align:left;font-size:20px;line-height:1.7;word-break:normal}.input-single{max-width:310px}
+  .choice{min-height:54px;font-size:14px;padding:12px 14px}.choices{gap:9px}.grid.cols-3{grid-template-columns:1fr}.radar-row{grid-template-columns:1fr;gap:5px}button{width:100%;max-width:320px}
 }
-
+@media print{@page{size:A4;margin:12mm}body{background:#fff!important}body *{visibility:hidden!important}#results,#results *{visibility:visible!important}#results{position:absolute!important;left:0;top:0;width:100%!important;box-shadow:none!important;border:0!important;background:#fff!important;padding:0!important}.no-print{display:none!important}.result-cover{break-after:page}.result-block,.rank-card,.month,.card,.todo,.evidence,.cta-box{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -225,7 +85,12 @@ p,li{
 <header class="hero no-print">
 <span class="badge">購入者限定特典</span>
 <h1>あなた専用<br><span>ダイエットロードマップ診断</span></h1>
-<p class="lead">1問ずつ答えるだけで、今のあなたに必要な「痩せない原因」「改善の優先順位」「90日ロードマップ」が分かります。</p>
+<p class="lead">1問ずつ答えるだけで、あなたに合ったダイエットの進め方が分かります。</p>
+<div class="benefit-list">
+  <div>✔ 痩せない原因</div>
+  <div>✔ ダイエットの優先順位</div>
+  <div>✔ あなた専用90日ロードマップ</div>
+</div>
 <div class="note">※この診断は一般的な健康・ダイエット知識をもとにしたセルフチェックです。医療的な診断・治療を目的とするものではありません。</div>
 <div class="progress-wrap"><div class="progress-text"><span id="progressLabel"></span><span id="progressPercent"></span></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
 </header>
@@ -239,7 +104,7 @@ p,li{
 <button class="secondary" type="button" id="resetBtn">リセット</button>
 </div>
 </section>
-<section class="panel hidden" id="loading"><div class="loading active"><h2>診断中...</h2><p class="small">あなた専用ロードマップを作成しています</p><div class="loader"><span></span></div></div></section>
+<section class="panel hidden" id="loading"><div class="loading"><h2>診断中...</h2><p class="small">あなた専用ロードマップを作成しています</p><div class="loader"><span></span></div></div></section>
 <section class="panel hidden" id="results"></section>
 <footer>© ダイエット卒業の教科書</footer>
 </main>
@@ -253,7 +118,12 @@ restriction:{label:"過去の極端な食事制限",icon:"⚠️",causeTitle:"�
 muscle:{label:"筋力・体づくり不足",icon:"💪",causeTitle:"見た目を変える土台が不足している",causeText:"体重だけを落としても、筋肉量が少ないと引き締まりにくく、理想の見た目に近づきにくいことがあります。",priority:"筋トレを取り入れる",action:"週2回、下半身・背中・お尻を中心に軽い筋トレを始める",todo:"スクワット・ヒップリフトなど下半身トレを1種目だけ試す",chapter:"第4章「痩せる運動と生活習慣」",advice:"見た目を変えたいなら、体重だけでなく筋肉を維持することも大切です。下半身・背中・お尻を中心に、無理のない筋トレを取り入れていきましょう。"}
 };
 const qs=[
-["食事記録をしても、<br>間食・飲み物・調味料を<br>入れ忘れることが多い","food","食事・活動量","🍽️"],["タンパク質や野菜が不足していると感じる","food","食事・活動量","🍽️"],["忙しい日は、<br>パン・麺・お菓子だけで<br>済ませることがある","food","食事・活動量","🍽️"],["外食やコンビニで<br>何を選べばいいか分からない","food","食事・活動量","🍽️"],["運動しない日の歩数が少ない、<br>または座っている時間が長い","activity","食事・活動量","🚶"],["移動は車・エレベーター中心で、日常であまり動かない","activity","食事・活動量","🚶"],["運動はしているけど、<br>それ以外の時間はほとんど座っている","activity","活動量・睡眠","🌙"],["食事を減らしているのに、<br>生活全体の活動量は少ない","activity","活動量・睡眠","🌙"],["睡眠時間が6時間未満の日が多い","sleep","活動量・睡眠","🌙"],["寝不足の日ほど、<br>甘いものや高カロリーなものを<br>食べたくなる","sleep","活動量・睡眠","🌙"],["起床・就寝時間が<br>日によって大きくバラバラ","sleep","活動量・睡眠","🌙"],["疲れていて、<br>運動や自炊を後回しにしやすい","sleep","活動量・睡眠","🌙"],["ストレスが溜まると、<br>食べて発散しやすい","stress","ストレス・過去の制限","💭"],["体重が増えると落ち込み、<br>極端な調整をしたくなる","stress","ストレス・過去の制限","💭"],["完璧にできないと、<br>もういいやと投げ出しやすい","stress","ストレス・過去の制限","💭"],["毎日体重に一喜一憂して、<br>気持ちが左右されやすい","stress","ストレス・過去の制限","💭"],["過去に糖質制限・断食・置き換えなどを<br>短期間で頑張ったことがある","restriction","ストレス・過去の制限","⚠️"],["食べる量を減らして痩せても、<br>反動で戻った経験がある","restriction","ストレス・過去の制限","⚠️"],["今も<br>「もっと食べる量を減らさないと」<br>と思いやすい","restriction","食事制限・体づくり","💪"],["ダイエット中は、<br>外食やお菓子に罪悪感を持ちやすい","restriction","食事制限・体づくり","💪"],["筋トレより、<br>有酸素や食事制限を優先しがち","muscle","食事制限・体づくり","💪"],["体重は落ちても、<br>見た目が思うように変わらなかった<br>経験がある","muscle","食事制限・体づくり","💪"],["お尻・背中・脚などの<br>筋トレ習慣がほとんどない","muscle","食事制限・体づくり","💪"],["引き締めたいけど、<br>何から筋トレすればいいか分からない","muscle","食事制限・体づくり","💪"]].map(([text,cat,group,icon])=>({text,cat,group,icon}));
+["食事記録をしても、間食・飲み物・調味料を入れ忘れることが多い","food","食事・活動量","🍽️"],["タンパク質や野菜が不足していると感じる","food","食事・活動量","🍽️"],["忙しい日は、パン・麺・お菓子だけで済ませることがある","food","食事・活動量","🍽️"],["外食やコンビニで何を選べばいいか分からない","food","食事・活動量","🍽️"],["つい食べすぎてしまい、満腹を超えて食べることが多い","food","食事・活動量","🍽️"],["お菓子や甘いものをほぼ毎日食べている","food","食事・活動量","🍽️"],["ジャンクフードや味の濃いものをよく食べたくなる","food","食事・活動量","🍽️"],
+["運動しない日の歩数が少ない、または座っている時間が長い","activity","活動量","🚶"],["移動は車・エレベーター中心で、日常であまり動かない","activity","活動量","🚶"],["運動はしているけど、それ以外の時間はほとんど座っている","activity","活動量","🚶"],["食事を減らしているのに、生活全体の活動量は少ない","activity","活動量","🚶"],
+["睡眠時間が6時間未満の日が多い","sleep","睡眠・生活リズム","🌙"],["寝不足の日ほど甘いものや高カロリーなものを食べたくなる","sleep","睡眠・生活リズム","🌙"],["起床・就寝時間が日によって大きくバラバラ","sleep","睡眠・生活リズム","🌙"],["疲れていて運動や自炊を後回しにしやすい","sleep","睡眠・生活リズム","🌙"],
+["ストレスが溜まると食べて発散しやすい","stress","ストレス・メンタル","💭"],["体重が増えると落ち込み、極端な調整をしたくなる","stress","ストレス・メンタル","💭"],["完璧にできないと、もういいやと投げ出しやすい","stress","ストレス・メンタル","💭"],["毎日体重に一喜一憂して、気持ちが左右されやすい","stress","ストレス・メンタル","💭"],
+["過去に糖質制限・断食・置き換えなどを短期間で頑張ったことがある","restriction","過去の食事制限","⚠️"],["食べる量を減らして痩せても、反動で戻った経験がある","restriction","過去の食事制限","⚠️"],["今も「もっと食べる量を減らさないと」と思いやすい","restriction","過去の食事制限","⚠️"],["ダイエット中は外食やお菓子に罪悪感を持ちやすい","restriction","過去の食事制限","⚠️"],
+["筋トレより有酸素や食事制限を優先しがち","muscle","筋力・体づくり","💪"],["体重は落ちても、見た目が思うように変わらなかった経験がある","muscle","筋力・体づくり","💪"],["お尻・背中・脚などの筋トレ習慣がほとんどない","muscle","筋力・体づくり","💪"],["引き締めたいけど、何から筋トレすればいいか分からない","muscle","筋力・体づくり","💪"]].map(([text,cat,group,icon])=>({text,cat,group,icon}));
 const meta=[
 {key:"age",type:"number",title:"あなたの年齢を教えてください",unit:"歳",placeholder:"例：27"},
 {key:"sex",type:"choice",title:"性別を選んでください",choices:[["女性","female"],["男性","male"]]},
@@ -277,27 +147,24 @@ function render(){
  }else if(st.type==="choice"){
    body=`<div class="step-box"><div class="step-kicker">基本情報</div><div class="step-title">${st.title}</div><div class="choices">${st.choices.map(([label,val])=>`<button type="button" class="choice ${String(valueOf(st))===String(val)?"selected":""}" data-value="${val}">${label}</button>`).join("")}</div></div>`;
  }else{
-   body=`<div class="step-box"><div class="step-kicker">${st.icon} ${st.group}</div><div class="q-count">質問 ${st.index+1} / ${qs.length}</div><div class="step-title">${st.text}</div><div class="choices">${opts.map(([label,val])=>`<button type="button" class="choice ${responses[st.index]===val?"selected":""}" data-value="${val}">${label}</button>`).join("")}</div></div>`;
+   body=`<div class="step-box"><div class="step-kicker">${st.icon} ${st.group}</div><div class="score">質問 ${st.index+1} / ${qs.length}</div><div class="step-title">${st.text}</div><div class="choices">${opts.map(([label,val])=>`<button type="button" class="choice ${responses[st.index]===val?"selected":""}" data-value="${val}">${label}</button>`).join("")}</div></div>`;
  }
  stepArea.innerHTML=body;
- document.querySelectorAll(".choice").forEach(btn=>btn.onclick=()=>{setValue(st,btn.dataset.value); if(st.type==="question")setValue(st,Number(btn.dataset.value)); document.querySelectorAll(".choice").forEach(b=>b.classList.remove("selected"));btn.classList.add("selected");});
- const inp=document.getElementById("singleInput"); if(inp) inp.oninput=e=>metaAns[st.key]=e.target.value;
+ document.querySelectorAll(".choice").forEach(btn=>btn.onclick=()=>{setValue(st,btn.dataset.value);if(st.type==="question")setValue(st,Number(btn.dataset.value));document.querySelectorAll(".choice").forEach(b=>b.classList.remove("selected"));btn.classList.add("selected")});
+ const inp=document.getElementById("singleInput");if(inp)inp.oninput=e=>metaAns[st.key]=e.target.value;
 }
 function next(){const st=allSteps[current];const inp=document.getElementById("singleInput");if(inp)metaAns[st.key]=inp.value;if(current<allSteps.length-1){current++;render()}}
 function prev(){if(current>0){current--;render()}}
+function maxScore(cat){return qs.filter(q=>q.cat===cat).length*2}
 function getScores(){const s={};Object.keys(categories).forEach(k=>s[k]=0);qs.forEach((q,i)=>s[q.cat]+=Number(responses[i]||0));return s}
 function calc(){const age=+metaAns.age,sex=metaAns.sex,h=+metaAns.height,w=+metaAns.weight,a=+metaAns.activity;if(!age||!h||!w)return null;const b=sex==="female"?10*w+6.25*h-5*age-161:10*w+6.25*h-5*age+5;return{bmr:Math.round(b),tdee:Math.round(b*a)}}
-function sortScores(s){return Object.entries(s).sort((a,b)=>b[1]-a[1])}
+function sortScores(s){return Object.entries(s).sort((a,b)=>(b[1]/maxScore(b[0]))-(a[1]/maxScore(a[0])))}
 function type(top,second){const map={food:["🍽️ 食事改善タイプ","食事量だけでなく、食事の内容・記録・バランスを整えることで結果につながりやすいタイプです。"],activity:["🚶 活動量アップタイプ","食事をさらに減らすより、日常の消費カロリーを増やすことが近道になりやすいタイプです。"],sleep:["🌙 生活リズム改善タイプ","睡眠や生活リズムを整えることで、食欲・疲労感・継続力が安定しやすいタイプです。"],stress:["💭 メンタル整えタイプ","完璧主義やストレス食いの影響を受けやすいため、無理なく続ける仕組みづくりが大切なタイプです。"],restriction:["🌿 食べながら整えるタイプ","過去の制限やリバウンド経験から、さらに減らすよりも適切に食べて整えることが大切なタイプです。"],muscle:["💪 体づくり強化タイプ","体重だけでなく見た目を変えるために、筋肉を維持・育てる習慣が効果的なタイプです。"]};if(top==="food"&&second==="restriction")return["🍽️ 食事リセットタイプ","食事を減らすことより、食事の質と量を整え直すことが結果につながりやすいタイプです。"];if(top==="activity"&&second==="muscle")return["🚶‍♀️ 動いて引き締めるタイプ","日常の活動量と筋トレを組み合わせることで、体重だけでなく見た目も変わりやすいタイプです。"];if(top==="sleep"&&second==="stress")return["🌙 整えて痩せるタイプ","睡眠・ストレス・生活リズムを整えることで、食欲や行動が安定しやすいタイプです。"];return map[top]}
 function roadmap(keys){const [f,s,t]=keys;return[[`最優先：${categories[f].priority}`,categories[f].action,"体重・体型・食事量を記録して、現状を見える化する"],[`次に：${categories[s].priority}`,categories[s].action,metaAns.goal==="shape"?"週2回の筋トレで見た目の変化を作る":"週ごとに変化を確認し、やり方を微調整する"],[`仕上げ：${categories[t].priority}`,categories[t].action,metaAns.goal==="maintain"?"リバウンドしない生活パターンを固定する":"無理なく続けられる習慣だけを残す"]]}
-function stars(score){const n=Math.max(1,Math.min(5,Math.round(score/8*5)));return"★".repeat(n)+"☆".repeat(5-n)}
+function stars(score,max){const n=Math.max(1,Math.min(5,Math.round(score/max*5)));return"★".repeat(n)+"☆".repeat(5-n)}
 function today(){const d=new Date();return`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`}
-function diagnose(){
- const inp=document.getElementById("singleInput"); if(inp)metaAns[allSteps[current].key]=inp.value;
- app.classList.add("hidden");loading.classList.remove("hidden");
- setTimeout(()=>{loading.classList.add("hidden");showResult();},900);
-}
-function showResult(){const sc=getScores(),so=sortScores(sc),keys=so.map(x=>x[0]),top=keys[0],second=keys[1],[tn,ts]=type(top,second),ca=calc(),rm=roadmap(keys);results.classList.remove("hidden");results.innerHTML=`<div class="result-cover result-block"><div class="score">診断日：${today()}</div><div class="result-cover-title">あなた専用<br><span>ダイエットロードマップ</span></div><p>あなたの診断タイプ</p><div class="type-name">${tn}</div><p class="small">この結果をもとに、今日からできることから始めていきましょう。</p></div><div class="result-hero result-block"><div class="small">診断結果</div><div class="type-name">${tn}</div><p>${ts}</p><div class="pill-list">${so.slice(0,3).map(([k])=>`<span class="pill">${categories[k].icon} ${categories[k].label}</span>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">1</span><h2>スコアバランス</h2></div><div class="card"><div class="radar">${so.map(([k,v])=>`<div class="radar-row"><strong>${categories[k].icon} ${categories[k].label}</strong><div class="bar"><span style="width:${Math.round(v/8*100)}%"></span></div><span>${v}/8</span></div>`).join("")}</div></div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">2</span><h2>痩せない原因ランキング</h2></div><div class="grid cols-3">${so.slice(0,3).map(([k,v],i)=>`<div class="rank-card"><span class="rank">${i+1}位</span><h3>${categories[k].icon} ${categories[k].label}</h3><div class="score">スコア：${v}点 / 8点</div><div class="stars">${stars(v)}</div><div class="meter"><span style="width:${Math.round(v/8*100)}%"></span></div><strong>${categories[k].causeTitle}</strong><p>${categories[k].causeText}</p></div>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">3</span><h2>改善の優先順位</h2></div><div class="priority-list">${keys.slice(0,5).map((k,i)=>`<div class="priority-item"><span class="rank">${i+1}</span><span>${categories[k].icon} ${categories[k].priority}</span></div>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">4</span><h2>あなた専用90日ロードマップ</h2></div><div class="roadmap">${rm.map((items,i)=>`<div class="month"><h3>${i+1}ヶ月目</h3><ul class="clean">${items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">5</span><h2>あなたへのアドバイス</h2></div><div class="card"><p>${categories[top].advice} その次に「${categories[second].priority}」を加えると、より安定して進めやすくなります。${ca?` 参考として、あなたの推定基礎代謝は約${ca.bmr}kcal、推定TDEEは約${ca.tdee}kcalです。`:''}</p></div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">6</span><h2>今日やること</h2></div><div class="todo"><ul class="clean"><li>${categories[top].todo}</li><li>教科書の ${categories[top].chapter} を読み返す</li><li>現状把握シートに今日の記録を書く</li></ul></div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="num">7</span><h2>根拠メモ</h2></div><div class="evidence"><ul class="clean"><li>体重管理は、摂取エネルギーと消費エネルギーの長期的なバランスが土台です。</li><li>健康的な減量には、食事だけでなく身体活動・睡眠・ストレス管理も関わります。</li><li>減量後は身体が省エネになりやすく、食欲や消費エネルギーの変化が起こるため、短期集中ではなく続けられる習慣が重要です。</li></ul></div></div><div class="btns no-print"><button class="primary" onclick="window.print()">診断結果をPDF保存/印刷する</button><button class="secondary" onclick="location.reload()">もう一度診断する</button></div>`}
+function diagnose(){const inp=document.getElementById("singleInput");if(inp)metaAns[allSteps[current].key]=inp.value;app.classList.add("hidden");loading.classList.remove("hidden");setTimeout(()=>{loading.classList.add("hidden");showResult()},900)}
+function showResult(){const sc=getScores(),so=sortScores(sc),keys=so.map(x=>x[0]),top=keys[0],second=keys[1],[tn,ts]=type(top,second),ca=calc(),rm=roadmap(keys);results.classList.remove("hidden");results.innerHTML=`<div class="result-cover result-block"><div class="score">診断日：${today()}</div><div class="result-cover-title">あなた専用<br><span>ダイエットロードマップ</span></div><p>あなたの診断タイプ</p><div class="type-name">${tn}</div><p class="small">この結果をもとに、今日からできることから始めていきましょう。</p></div><div class="result-hero result-block"><div class="small">診断結果</div><div class="type-name">${tn}</div><p>${ts}</p><div class="pill-list">${so.slice(0,3).map(([k])=>`<span class="pill">${categories[k].icon} ${categories[k].label}</span>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">1</span><h2>スコアバランス</h2></div><div class="card"><div class="radar">${so.map(([k,v])=>`<div class="radar-row"><strong>${categories[k].icon} ${categories[k].label}</strong><div class="bar"><span style="width:${Math.round(v/maxScore(k)*100)}%"></span></div><span>${v}/${maxScore(k)}</span></div>`).join("")}</div></div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">2</span><h2>痩せない原因ランキング</h2></div><div class="grid cols-3">${so.slice(0,3).map(([k,v],i)=>`<div class="rank-card"><span class="rank">${i+1}位</span><h3>${categories[k].icon} ${categories[k].label}</h3><div class="score">スコア：${v}点 / ${maxScore(k)}点</div><div class="stars">${stars(v,maxScore(k))}</div><div class="meter"><span style="width:${Math.round(v/maxScore(k)*100)}%"></span></div><strong>${categories[k].causeTitle}</strong><p>${categories[k].causeText}</p></div>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">3</span><h2>改善の優先順位</h2></div><div class="priority-list">${keys.slice(0,5).map((k,i)=>`<div class="priority-item"><span class="rank">${i+1}</span><span>${categories[k].icon} ${categories[k].priority}</span></div>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">4</span><h2>あなた専用90日ロードマップ</h2></div><div class="roadmap">${rm.map((items,i)=>`<div class="month"><h3>${i+1}ヶ月目</h3><ul class="clean">${items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">5</span><h2>あなたへのアドバイス</h2></div><div class="card"><p>${categories[top].advice} その次に「${categories[second].priority}」を加えると、より安定して進めやすくなります。${ca?` 参考として、あなたの推定基礎代謝は約${ca.bmr}kcal、推定TDEEは約${ca.tdee}kcalです。`:''}</p></div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">6</span><h2>今日やること</h2></div><div class="todo"><ul class="clean"><li>${categories[top].todo}</li><li>教科書の ${categories[top].chapter} を読み返す</li><li>現状把握シートに今日の記録を書く</li></ul></div></div><div class="result-block"><div class="section-title" style="margin-top:22px;"><span class="rank">7</span><h2>根拠メモ</h2></div><div class="evidence"><ul class="clean"><li>体重管理は、摂取エネルギーと消費エネルギーの長期的なバランスが土台です。</li><li>健康的な減量には、食事だけでなく身体活動・睡眠・ストレス管理も関わります。</li><li>減量後は身体が省エネになりやすく、食欲や消費エネルギーの変化が起こるため、短期集中ではなく続けられる習慣が重要です。</li></ul></div></div><div class="btns no-print"><button class="primary" onclick="window.print()">診断結果をPDF保存/印刷する</button><button class="secondary" onclick="location.reload()">もう一度診断する</button></div>`}
 prevBtn.onclick=prev;nextBtn.onclick=next;diagnoseBtn.onclick=diagnose;resetBtn.onclick=()=>location.reload();render();
 </script>
 </body>
